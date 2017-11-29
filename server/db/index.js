@@ -37,12 +37,12 @@
 
 
 const Sequelize = require('sequelize');
-db is named messages
-const db = new Sequelize('messages', 'root', '', {
-  dialect: 'mysql'
+// db is named messages
+const db = new Sequelize(process.env.SESAMEDB, {
+  dialect: 'mysql',
 });
 
-db.query('CREATE DATABASE IF NOT EXISTS messages').then(() => console.log('Database created'));
+//db.query('CREATE DATABASE IF NOT EXISTS messages').then(() => console.log('Database created'));
 
 // // //DEPLOYMENT DB
 
