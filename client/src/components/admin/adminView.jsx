@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Message from './message.jsx';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
+import Message from './message';
 
 
 class AdminView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //example data for mocking
+      // example data for mocking
       messages: [
         {
           id: 1,
@@ -17,7 +17,7 @@ class AdminView extends React.Component {
           last_name: 'Smith',
           user_message: 'Test message',
           user_contact: 'Test contact info',
-          user_urgency: '3'
+          user_urgency: '3',
         },
         {
           id: 2,
@@ -26,20 +26,23 @@ class AdminView extends React.Component {
           last_name: 'Person',
           user_message: 'Test message 2',
           user_contact: 'Test contact info 2',
-          user_urgency: '1'
-        }
+          user_urgency: '1',
+        },
       ],
-      messageId: null,
-      response: '',   
-    }
+      // messageId: null,
+      // response: '',
+    };
+
+    this.setStatus = this.setStatus.bind(this);
+    this.setResponseId = this.setResponseId.bind(this);
   }
 
   componentDidMount() {
-    this.props.retrieveOpenMessages( (data) => {
+    this.props.retrieveOpenMessages((data) => {
       console.log('ADMIN MESSAGES', data);
       this.setState({
-        //may have to change 'data' depending on format
-        messages: data
+        // may have to change 'data' depending on format
+        messages: data,
       });
     });
   }
@@ -54,14 +57,14 @@ class AdminView extends React.Component {
   //   });
   // }
 
-  //sets state variable messageId to currently selected message's id
-  setResponseId(id) {
-    this.setState({
-      messageId: id
-    });
-  }
+  // sets state variable messageId to currently selected message's id
+  // setResponseId(id) {
+  //   this.setState({
+  //     messageId: id,
+  //   });
+  // }
 
-  //calls the markAsComplete method in index.jsx to send id and status to server
+  // calls the markAsComplete method in index.jsx to send id and status to server
   setStatus(id) {
     this.props.markAsComplete(id);
   }
@@ -70,21 +73,40 @@ class AdminView extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.props.showLogIn.bind(this)} className="admin-change-user-button" bsSize="small" bsStyle="primary">Sign In as a Different User</Button>
+        <Button
+          onClick={() => this.props.showLogIn()}
+          className="admin-change-user-button"
+          bsSize="small"
+          bsStyle="primary"
+        >
+          Sign In as a Different User
+        </Button>
         <div className="admin-header group">
           <h3 className="welcome-header">Welcome to Your Inbox!</h3>
           <h4>You can view and respond to user messages here.</h4>
         </div>
-        
+
         <ul className="user-message-ul">
-          {this.state.messages.map( (message, index) => {
-            return <Message submitAdminResponse={this.props.submitAdminResponse} setStatus={this.setStatus.bind(this)} setResponseId={this.setResponseId.bind(this)} key={index} message={message}/>
-          })}
+          {this.state.messages.map(message => (
+            <Message
+              submitAdminResponse={this.props.submitAdminResponse}
+              setStatus={this.setStatus}
+              key={message.id}
+              message={message}
+            />
+          ))}
         </ul>
 
       </div>
-    )
+    );
   }
 }
+
+AdminView.propTypes = {
+  retrieveOpenMessages: PropTypes.func.isRequired,
+  markAsComplete: PropTypes.func.isRequired,
+  showLogIn: PropTypes.func.isRequired,
+  submitAdminResponse: PropTypes.func.isRequired,
+};
 
 export default AdminView;
