@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -16,43 +16,49 @@ class Signup extends React.Component {
       checkPassword: '',
       admin: '',
       firstName: '',
-      lastName: ''
-    }
+      lastName: '',
+    };
+    this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.onFirstNameChange = this.onFirstNameChange.bind(this);
+    this.onLastNameChange = this.onLastNameChange.bind(this);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onCheckPasswordChange = this.onCheckPasswordChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onUsernameChange(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
     });
   }
 
   onFirstNameChange(e) {
     this.setState({
-      firstName: e.target.value
+      firstName: e.target.value,
     });
   }
 
   onLastNameChange(e) {
     this.setState({
-      lastName: e.target.value
+      lastName: e.target.value,
     });
   }
 
   onPasswordChange(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   }
 
   onCheckPasswordChange(e) {
     this.setState({
-      checkPassword: e.target.value
+      checkPassword: e.target.value,
     });
-  }  
+  }
 
   onAdminCheck(e) {
     this.setState({
-      admin: 'admin'
+      admin: 'admin',
     });
   }
 
@@ -75,43 +81,48 @@ class Signup extends React.Component {
   }
 
 
-  //On deployment: remove option to sign up as an admin. This will be done directly within the database.
+  // On deployment: remove option to sign up as an admin. 
+  // This will be done directly within the database.
   render() {
     return (
       <div className="container signup-container">
         <PageHeader><small>Signup</small></PageHeader>
         <ControlLabel className="signup-username">
-          Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange.bind(this)}></FormControl>
+          Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange}></FormControl>
         </ControlLabel>
         <br></br>
         <ControlLabel className="signup-username">
-          First Name<FormControl type="text" placeholder="first name..." onChange={this.onFirstNameChange.bind(this)}></FormControl>
+          First Name<FormControl type="text" placeholder="first name..." onChange={this.onFirstNameChange}></FormControl>
         </ControlLabel>
         <br></br>
         <ControlLabel className="signup-username">
-          Last Name<FormControl type="text" placeholder="last name..." onChange={this.onLastNameChange.bind(this)}></FormControl>
+          Last Name<FormControl type="text" placeholder="last name..." onChange={this.onLastNameChange}></FormControl>
         </ControlLabel>
         <br></br>
         <ControlLabel className="signup-password">
-          Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange.bind(this)}></FormControl>
+          Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange}></FormControl>
         </ControlLabel>
         <br></br>
         <ControlLabel className="signup-password">
-          Type Password Again<FormControl type="password" placeholder="password..." onChange={this.onCheckPasswordChange.bind(this)}></FormControl>
+          Type Password Again<FormControl type="password" placeholder="password..." onChange={this.onCheckPasswordChange}></FormControl>
         </ControlLabel>
         <br></br>
         
         <div className="col-centered">
           <ButtonToolbar>
-            <Button className="sign-up-button" bsStyle="primary" onClick={this.onSubmit.bind(this)}>Create Account</Button>
+            <Button className="sign-up-button" bsStyle="primary" onClick={this.onSubmit}>Create Account</Button>
             <Button className="sign-up-button" bsStyle="primary" onClick={this.props.showLogIn}>Return to log in page</Button>
           </ButtonToolbar>
         </div>
       </div>
     );
   }
-
 }
+
+Signup.propTypes = {
+  showLogIn: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
+};
 
 export default Signup;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -10,19 +10,21 @@ class Login extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
-    }
+      password: '',
+    };
+    this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
   }
 
   onUsernameChange(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
     });
   }
 
   onPasswordChange(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   }
 
@@ -35,11 +37,11 @@ class Login extends React.Component {
       <div className="container login-container">
         <div>
           <PageHeader><small>Login to report a bug:</small></PageHeader>
-          <ControlLabel className="login-username" >Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange.bind(this)}></FormControl></ControlLabel>
+          <ControlLabel className="login-username" >Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange}></FormControl></ControlLabel>
           <br></br>
-          <ControlLabel className="login-password">Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange.bind(this)}></FormControl></ControlLabel>
+          <ControlLabel className="login-password">Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange}></FormControl></ControlLabel>
           <br></br>
-          <Button bsStyle="primary" className="login-button" onClick={this.onSubmit.bind(this)}>Log In</Button>
+          <Button bsStyle="primary" className="login-button" onClick={() => this.onSubmit()}>Log In</Button>
           <br></br>
         </div>
         <div>
@@ -49,7 +51,11 @@ class Login extends React.Component {
       </div>
     );
   }
-
 }
+
+Login.propTypes = {
+  showSignUp: PropTypes.func.isRequired,
+  logInUser: PropTypes.func.isRequired,
+};
 
 export default Login;
