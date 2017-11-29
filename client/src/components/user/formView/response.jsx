@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
 import moment from 'moment';
 
@@ -8,7 +8,7 @@ class Response extends React.Component {
     super(props);
   }
 
-  //Render all admin responses for this user in reverse chronological order of original message submission date
+  // Render all admin responses for this user in reverse chronological order of original message submission date
   render() {
     return (
       <div className="admin-response-container group">
