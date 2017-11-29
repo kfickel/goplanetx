@@ -24,7 +24,8 @@ class Response extends React.Component {
   // when admin submits a response,
   // calls the submitAdminResponse method to send id and response to server as a patch request
   sendResponse() {
-  // console.log(`RESPONSE VARS:  ${this.props.messageId}, ${this.state.response}, ${this.props.messageName}`);
+  // console.log(`RESPONSE VARS:  ${this.props.messageId},
+  // ${this.state.response}, ${this.props.messageName}`);
     this.props.submitAdminResponse(this.props.messageId, this.state.response);
   }
 
@@ -32,14 +33,14 @@ class Response extends React.Component {
     // console.log('RESPONSE PROPS', this.props);
     return (
       <FormGroup>
-        <div>Respond to {this.props.messageName}'s message:</div>
+        <div>Respond to {this.props.messageName}&apos;s message:</div>
         <FormControl
           componentClass="textarea"
           onChange={this.updateResponse}
           type="text"
           placeholder="Response..."
         />
-        <br></br>
+        <br />
         <Button
           bsStyle="primary"
           onClick={this.sendResponse}

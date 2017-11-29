@@ -37,15 +37,35 @@ class Login extends React.Component {
       <div className="container login-container">
         <div>
           <PageHeader><small>Login to report a bug:</small></PageHeader>
-          <ControlLabel className="login-username" >Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange}></FormControl></ControlLabel>
-          <br></br>
-          <ControlLabel className="login-password">Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange}></FormControl></ControlLabel>
-          <br></br>
-          <Button bsStyle="primary" className="login-button" onClick={() => this.onSubmit()}>Log In</Button>
-          <br></br>
+          <ControlLabel className="login-username">
+            Username
+            <FormControl
+              type="text"
+              placeholder="username..."
+              onChange={this.onUsernameChange}
+            />
+          </ControlLabel>
+          <br />
+          <ControlLabel className="login-password">
+            Password
+            <FormControl
+              type="password"
+              placeholder="password..."
+              onChange={this.onPasswordChange}
+            />
+          </ControlLabel>
+          <br />
+          <Button
+            bsStyle="primary"
+            className="login-button"
+            onClick={() => this.onSubmit()}
+          >
+            Log In
+          </Button>
+          <br />
         </div>
         <div>
-          <PageHeader><small>Don't have an account? Sign up:</small></PageHeader>
+          <PageHeader><small>Don&apos;t have an account? Sign up:</small></PageHeader>
           <Button bsStyle="primary" onClick={this.props.showSignUp}>Signup</Button>
         </div>
       </div>

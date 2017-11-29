@@ -38,15 +38,29 @@ class AdminLogin extends React.Component {
       <div className="container login-container">
         <div>
           <PageHeader><small>Admin Login:</small></PageHeader>
-          <ControlLabel className="login-username" >Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange}></FormControl></ControlLabel>
-          <br></br>
-          <ControlLabel className="login-password">Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange}></FormControl></ControlLabel>
-          <br></br>
+          <ControlLabel className="login-username" >
+            Username
+            <FormControl
+              type="text"
+              placeholder="username..."
+              onChange={this.onUsernameChange}
+            />
+          </ControlLabel>
+          <br />
+          <ControlLabel className="login-password">
+            Password
+            <FormControl
+              type="password"
+              placeholder="password..."
+              onChange={this.onPasswordChange}
+            />
+          </ControlLabel>
+          <br />
           <Button bsStyle="primary" className="login-button" onClick={this.onSubmit}>Log In</Button>
-          <br></br>
+          <br />
         </div>
         <div>
-          <PageHeader><small>Don't have an account? Request one:</small></PageHeader>
+          <PageHeader><small>Don&apos;t have an account? Request one:</small></PageHeader>
           <Button bsStyle="primary" onClick={this.props.showSignUp}>Signup</Button>
         </div>
       </div>

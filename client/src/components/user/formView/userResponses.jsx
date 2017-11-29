@@ -15,7 +15,7 @@ class UserResponses extends React.Component {
 
   componentDidMount() {
     console.log('USER PROPS', this.props);
-    this.props.retrieveResponses(this.props.username, (data) => {
+    this.props.retrieveResponses((data) => {
       console.log('USER MESSAGES ON SUB COMPONENT', data);
       this.setState({
         responses: data,
@@ -47,27 +47,25 @@ class UserResponses extends React.Component {
           </ul>
         </div>
       );
-    } else {
-      return (
-        <div className="user-header">
-          <h3>Message Inbox</h3>
-          <h4>You will see responses to messages you have sent here.</h4>
-          <Button
-            bsStyle="primary"
-            onClick={this.props.showSubmissionForm}
-          >
-          Send a new message
-          </Button>
-          <div>No responses yet. Please check back soon!</div>
-        </div>
-      );
     }
+    return (
+      <div className="user-header">
+        <h3>Message Inbox</h3>
+        <h4>You will see responses to messages you have sent here.</h4>
+        <Button
+          bsStyle="primary"
+          onClick={this.props.showSubmissionForm}
+        >
+        Send a new message
+        </Button>
+        <div>No responses yet. Please check back soon!</div>
+      </div>
+    );
   }
 }
 
 UserResponses.propTypes = {
   showSubmissionForm: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
   retrieveResponses: PropTypes.func.isRequired,
 };
 

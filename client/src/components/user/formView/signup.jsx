@@ -5,7 +5,6 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
-import Checkbox from 'react-bootstrap/lib/Checkbox';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -56,7 +55,7 @@ class Signup extends React.Component {
     });
   }
 
-  onAdminCheck(e) {
+  onAdminCheck() {
     this.setState({
       admin: 'admin',
     });
@@ -64,54 +63,73 @@ class Signup extends React.Component {
 
   onSubmit() {
     if (this.state.username === '') {
-      return alert('Oops! Username cannot be empty. Let\'s try that again.');
+      alert('Oops! Username cannot be empty. Let\'s try that again.');
     }
 
     if (this.state.firstName === '') {
-      return alert('Oops! First name cannot be empty. Let\'s try that again.');
+      alert('Oops! First name cannot be empty. Let\'s try that again.');
     }
 
     if (this.state.password.length < 8) {
-      return alert('Oops! Password must be at least 8 characters long. Let\'s try that again.');
+      alert('Oops! Password must be at least 8 characters long. Let\'s try that again.');
     }
     if (this.state.password !== this.state.checkPassword) {
-      return alert('Oops! Make sure both password fields match.');
+      alert('Oops! Make sure both password fields match.');
     }
-    this.props.createUser(this.state.username, this.state.password, this.state.admin, this.state.firstName, this.state.lastName);
+    this.props.createUser(
+      this.state.username,
+      this.state.password,
+      this.state.admin,
+      this.state.firstName,
+      this.state.lastName,
+    );
   }
 
 
-  // On deployment: remove option to sign up as an admin. 
+  // On deployment: remove option to sign up as an admin.
   // This will be done directly within the database.
   render() {
     return (
       <div className="container signup-container">
         <PageHeader><small>Signup</small></PageHeader>
         <ControlLabel className="signup-username">
-          Username<FormControl type="text" placeholder="username..." onChange={this.onUsernameChange}></FormControl>
+          Username
+          <FormControl type="text" placeholder="username..." onChange={this.onUsernameChange} />
         </ControlLabel>
-        <br></br>
+        <br />
         <ControlLabel className="signup-username">
-          First Name<FormControl type="text" placeholder="first name..." onChange={this.onFirstNameChange}></FormControl>
+          First Name
+          <FormControl type="text" placeholder="first name..." onChange={this.onFirstNameChange} />
         </ControlLabel>
-        <br></br>
+        <br />
         <ControlLabel className="signup-username">
-          Last Name<FormControl type="text" placeholder="last name..." onChange={this.onLastNameChange}></FormControl>
+          Last Name
+          <FormControl type="text" placeholder="last name..." onChange={this.onLastNameChange} />
         </ControlLabel>
-        <br></br>
+        <br />
         <ControlLabel className="signup-password">
-          Password<FormControl type="password" placeholder="password..." onChange={this.onPasswordChange}></FormControl>
+          Password
+          <FormControl type="password" placeholder="password..." onChange={this.onPasswordChange} />
         </ControlLabel>
-        <br></br>
+        <br />
         <ControlLabel className="signup-password">
-          Type Password Again<FormControl type="password" placeholder="password..." onChange={this.onCheckPasswordChange}></FormControl>
+          Type Password Again
+          <FormControl
+            type="password"
+            placeholder="password..."
+            onChange={this.onCheckPasswordChange}
+          />
         </ControlLabel>
-        <br></br>
-        
+        <br />
+
         <div className="col-centered">
           <ButtonToolbar>
-            <Button className="sign-up-button" bsStyle="primary" onClick={this.onSubmit}>Create Account</Button>
-            <Button className="sign-up-button" bsStyle="primary" onClick={this.props.showLogIn}>Return to log in page</Button>
+            <Button className="sign-up-button" bsStyle="primary" onClick={this.onSubmit}>
+              Create Account
+            </Button>
+            <Button className="sign-up-button" bsStyle="primary" onClick={this.props.showLogIn}>
+              Return to log in page
+            </Button>
           </ButtonToolbar>
         </div>
       </div>
@@ -127,5 +145,6 @@ Signup.propTypes = {
 export default Signup;
 
 // check box removed from line 103...
-// (<Checkbox className="admin-checkbox" onChange={this.onAdminCheck.bind(this)}>Administrator</Checkbox>
-//         <br></br>)
+// (<Checkbox className="admin-checkbox" onChange={this.onAdminCheck.bind(this)}>
+// Administrator</Checkbox>
+//         <br />)

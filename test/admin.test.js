@@ -29,18 +29,12 @@ describe('Component: AdminView', () => {
   const showLogIn = () => {
     console.log('show log in');
   };
-  const markAsComplete = () => {
-    console.log('mark as complete');
-  };
-  const submitAdminResponse = () => {
-    console.log('submit admin response');
-  };
   const retrieveOpenMessages = () => {
     console.log('retrieve open messages');
   };
   
   it('should match its empty snapshot', () => {
-    const component = shallow( <AdminView showLogIn={showLogIn} markAsComplete={markAsComplete} submitAdminResponse={submitAdminResponse} retrieveOpenMessages={retrieveOpenMessages}/>);
+    const component = shallow( <AdminView showLogIn={showLogIn} retrieveOpenMessages={retrieveOpenMessages}/>);
 
     expect(component).toMatchSnapshot();
   });
