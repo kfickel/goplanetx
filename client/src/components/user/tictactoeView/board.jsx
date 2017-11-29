@@ -95,3 +95,4 @@ Board.propTypes = {
 };
 
 export default Board;
+export default HotSquare;

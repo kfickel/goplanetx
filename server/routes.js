@@ -1,6 +1,6 @@
-//This file sets up express router
-var controller = require('./controllers/index.js');
-var router = require('express').Router();
+// This file sets up express router
+const controller = require('./controllers/index.js');
+const router = require('express').Router();
 
 
 // router.get('/login', controller.login.get);
