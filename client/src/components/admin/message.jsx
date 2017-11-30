@@ -29,7 +29,6 @@ class Message extends React.Component {
   // Call initiateResponse in adminView with this message's id
   // Nice to have: indicate which response is being responded to
   onRespondClick() {
-    console.log('respond click', this.state.messageId)
     this.props.setResponseId(this.state.messageId);
     this.setState({
       showResponseForm: !this.state.showResponseForm,
@@ -39,12 +38,12 @@ class Message extends React.Component {
     // }
   }
 
-  markAsComplete() {
+  markAsComplete(id) {
     $.ajax({
       method: 'PATCH',
       url: '/submissions',
       data: {
-        id: this.state.messageId,
+        id,
         admin_complete: true,
       },
       success: (data) => {
@@ -83,7 +82,7 @@ class Message extends React.Component {
           </div>
           <div className="message-actions group">
             <Checkbox
-              onClick={this.markAsComplete}
+              onClick={() => this.markAsComplete(this.props.message.id)}
               type="checkbox"
             >
             Case Complete
@@ -127,7 +126,7 @@ class Message extends React.Component {
         </div>
         <div className="message-actions group">
           <Checkbox
-            onClick={this.onCompleteCheck}
+            onClick={() => this.markAsComplete(this.props.message.id)}
             type="checkbox"
           >
           Case Complete
@@ -157,6 +156,7 @@ Message.propTypes = {
     createdAt: PropTypes.string,
   }).isRequired,
   setResponseId: PropTypes.func.isRequired,
+  submitAdminResponse: PropTypes.func.isRequired,
 };
 
 export default Message;
