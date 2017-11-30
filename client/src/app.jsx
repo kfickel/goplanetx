@@ -10,6 +10,7 @@ import Submission from './components/user/formView/submission';
 import AdminView from './components/admin/adminView';
 import UserResponses from './components/user/formView/userResponses';
 import AdminLogin from './components/user/formView/adminLogin';
+import Users from './components/admin/users';
 
 class App extends React.Component {
   constructor(props) {
@@ -311,7 +312,8 @@ class App extends React.Component {
       <Switch>
         <Route exact path="/" render={this.conditionalRender} />
         <Route
-          exact path="/admin"
+          exact
+          path="/admin"
           render={() => (
             <AdminLogin showSignUp={this.showSignUp} logInUser={this.logInUser} />
           )}
@@ -323,6 +325,12 @@ class App extends React.Component {
               showLogIn={this.showLogIn}
               retrieveOpenMessages={this.retrieveOpenMessages}
             />
+          )}
+        />
+        <Route
+          path="/admin/users"
+          render={() => (
+            <Users />
           )}
         />
       </Switch>
