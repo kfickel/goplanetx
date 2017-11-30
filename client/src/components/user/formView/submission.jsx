@@ -121,7 +121,13 @@ class Submission extends React.Component {
           />
           <br />
           <Button bsStyle="primary" onClick={this.onSubmit}>Submit Message</Button>
-          <Button bsStyle="primary" className="logout" onClick={this.props.onLogoutUser}>Logout</Button>
+          <Button
+            bsStyle="primary"
+            className="logout"
+            onClick={this.props.onLogoutUser}
+          >
+            Logout
+          </Button>
         </div>
 
       </div>
