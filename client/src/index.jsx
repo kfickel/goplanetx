@@ -153,7 +153,7 @@ class App extends React.Component {
       method: 'GET',
       url: `/submissions?username=${this.state.username}&account_type=${this.state.type}`,
       success: (data) => {
-        console.log(data);
+        console.log('DATA MESSAGES', typeof data[0].createdAt);
         callback(data);
       },
       error: (error) => {

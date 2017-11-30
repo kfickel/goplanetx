@@ -26,7 +26,7 @@ class Response extends React.Component {
   sendResponse() {
   // console.log(`RESPONSE VARS:  ${this.props.messageId},
   // ${this.state.response}, ${this.props.messageName}`);
-    this.props.submitAdminResponse(this.props.messageId, this.state.response);
+    this.props.submitAdminResponse(this.state.response);
   }
 
   render() {
