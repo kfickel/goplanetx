@@ -78,7 +78,7 @@ class Message extends React.Component {
             <br />
             <span className="message-body">Message: </span>
             <br />
-            <p>{this.props.message.user_message}</p>
+            <p className="user-message-body">{this.props.message.user_message}</p>
           </div>
           <div className="message-actions group">
             <Checkbox
