@@ -181,7 +181,7 @@ class App extends React.Component {
   }
 
   showLogIn() {
-    if (this.state.view !== 'admin') {
+    if (this.state.type !== 'admin') {
       this.setState({
         view: 'login',
         showBugButton: false,
