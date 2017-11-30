@@ -100,7 +100,6 @@ class AdminView extends React.Component {
         </div>
         <ul className="user-message-ul">
           {this.state.messages.filter(message => (
-            // console.log('user message ', message.user_message)
             message.user_message.toLowerCase().includes(this.state.search.toLowerCase()) ||
             (`${message.first_name.toLowerCase()} ${message.last_name.toLowerCase()}`).includes(this.state.search.toLowerCase())
           )).map(message => (
