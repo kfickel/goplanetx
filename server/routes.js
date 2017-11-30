@@ -13,6 +13,9 @@ router.get('/submissions', controller.submissions.get);
 router.post('/submissions', controller.submissions.post);
 router.patch('/submissions', controller.submissions.patch);
 
+router.get('/users', controller.users.get);
+router.patch('/users', controller.users.patch);
+
 router.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/dist/` });
 });
