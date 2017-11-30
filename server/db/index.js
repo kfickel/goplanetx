@@ -4,7 +4,7 @@
 
 const Sequelize = require('sequelize');
 
-const db = new Sequelize(process.env.SESAMEDB, {
+const db = new Sequelize('messages', 'root', '', {
   dialect: 'mysql',
 });
 
