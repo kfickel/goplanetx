@@ -1,11 +1,9 @@
 import React from 'react';
-import AdminView from '../client/src/components/admin/adminView.jsx';
-import Message from '../client/src/components/admin/message.jsx';
-import Response from '../client/src/components/admin/response.jsx';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
+import AdminView from '../client/src/components/admin/adminView';
+import Response from '../client/src/components/admin/response';
 
-/*TEST ADMIN COMPONENTS*/
+/* TEST ADMIN COMPONENTS */
 
 // describe('Component: Message', () => {
 //   const message = {
@@ -29,22 +27,17 @@ describe('Component: AdminView', () => {
   const showLogIn = () => {
     console.log('show log in');
   };
-  const markAsComplete = () => {
-    console.log('mark as complete');
-  };
-  const submitAdminResponse = () => {
-    console.log('submit admin response');
-  };
   const retrieveOpenMessages = () => {
     console.log('retrieve open messages');
   };
-  
+
   it('should match its empty snapshot', () => {
-    const component = shallow( <AdminView showLogIn={showLogIn} markAsComplete={markAsComplete} submitAdminResponse={submitAdminResponse} retrieveOpenMessages={retrieveOpenMessages}/>);
+    const component = shallow((
+      <AdminView showLogIn={showLogIn} retrieveOpenMessages={retrieveOpenMessages} />
+    ));
 
     expect(component).toMatchSnapshot();
   });
-
 });
 
 describe('Component: Response', () => {
@@ -53,11 +46,15 @@ describe('Component: Response', () => {
   const submitAdminResponse = () => {
     console.log('submit admin response');
   };
-  
   it('should match its empty snapshot', () => {
-    const component = shallow( <Response messageName={messageName} messageId={messageId} submitAdminResponse={submitAdminResponse}/>);
+    const component = shallow((
+      <Response
+        messageName={messageName}
+        messageId={messageId}
+        submitAdminResponse={submitAdminResponse}
+      />
+    ));
 
     expect(component).toMatchSnapshot();
   });
-
 });

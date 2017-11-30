@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders correctly should match its empty snapshot 1`] = `
+<div
+  className="container login-container"
+>
+  <div>
+    <PageHeader
+      bsClass="page-header"
+    >
+      <small>
+        Login to report a bug:
+      </small>
+    </PageHeader>
+    <ControlLabel
+      bsClass="control-label"
+      className="login-username"
+      srOnly={false}
+    >
+      Username
+      <FormControl
+        bsClass="form-control"
+        componentClass="input"
+        onChange={[Function]}
+        placeholder="username..."
+        type="text"
+      />
+    </ControlLabel>
+    <br />
+    <ControlLabel
+      bsClass="control-label"
+      className="login-password"
+      srOnly={false}
+    >
+      Password
+      <FormControl
+        bsClass="form-control"
+        componentClass="input"
+        onChange={[Function]}
+        placeholder="password..."
+        type="password"
+      />
+    </ControlLabel>
+    <br />
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="primary"
+      className="login-button"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Log In
+    </Button>
+    <br />
+  </div>
+  <div>
+    <PageHeader
+      bsClass="page-header"
+    >
+      <small>
+        Don't have an account? Sign up:
+      </small>
+    </PageHeader>
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Signup
+    </Button>
+  </div>
+</div>
+`;
+
+exports[`Response component renders correctly should match its empty snapshot 1`] = `
+<div
+  className="admin-response-container group"
+>
+  <div
+    className="response-contents group"
+  >
+    <span
+      className="message-created-at"
+    >
+      Created: 
+    </span>
+    <p>
+      November 29th 2017, 2:59 pm
+    </p>
+    <br />
+    <span
+      className="message-body"
+    >
+      Your original message:
+    </span>
+    <p>
+      jumped over the lazy dog
+    </p>
+    <br />
+    <span
+      className="response-body"
+    >
+      Response: 
+    </span>
+    <p />
+  </div>
+  <div
+    className="response-actions group"
+  >
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsSize="small"
+      bsStyle="primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Respond to Message
+    </Button>
+  </div>
+</div>
+`;
+
+exports[`Signup component renders correctly should match its empty snapshot 1`] = `
+<div
+  className="container signup-container"
+>
+  <PageHeader
+    bsClass="page-header"
+  >
+    <small>
+      Signup
+    </small>
+  </PageHeader>
+  <ControlLabel
+    bsClass="control-label"
+    className="signup-username"
+    srOnly={false}
+  >
+    Username
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="username..."
+      type="text"
+    />
+  </ControlLabel>
+  <br />
+  <ControlLabel
+    bsClass="control-label"
+    className="signup-username"
+    srOnly={false}
+  >
+    First Name
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="first name..."
+      type="text"
+    />
+  </ControlLabel>
+  <br />
+  <ControlLabel
+    bsClass="control-label"
+    className="signup-username"
+    srOnly={false}
+  >
+    Last Name
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="last name..."
+      type="text"
+    />
+  </ControlLabel>
+  <br />
+  <ControlLabel
+    bsClass="control-label"
+    className="signup-password"
+    srOnly={false}
+  >
+    Password
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="password..."
+      type="password"
+    />
+  </ControlLabel>
+  <br />
+  <ControlLabel
+    bsClass="control-label"
+    className="signup-password"
+    srOnly={false}
+  >
+    Type Password Again
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="password..."
+      type="password"
+    />
+  </ControlLabel>
+  <br />
+  <div
+    className="col-centered"
+  >
+    <ButtonToolbar
+      bsClass="btn-toolbar"
+    >
+      <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="primary"
+        className="sign-up-button"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Create Account
+      </Button>
+      <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="primary"
+        className="sign-up-button"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Return to log in page
+      </Button>
+    </ButtonToolbar>
+  </div>
+</div>
+`;
+
+exports[`Submission component renders correctly should match its empty snapshot 1`] = `
+<div
+  className="user-submission-main"
+>
+  <PageHeader
+    bsClass="page-header"
+  >
+    Submission Form
+  </PageHeader>
+  <h5>
+    Use this form to submit a bug or to respond to an admin&apos;s request for additional information.
+  </h5>
+  <Button
+    active={false}
+    block={false}
+    bsClass="btn"
+    bsStyle="primary"
+    className="change-view-button"
+    disabled={false}
+    onClick={[Function]}
+  >
+    View Correspondence
+  </Button>
+  <div
+    className="user-submission-container"
+  >
+    <ControlLabel
+      bsClass="control-label"
+      className="contact-info"
+      srOnly={false}
+    >
+      How can we contact you?
+    </ControlLabel>
+    <br />
+    <FormControl
+      bsClass="form-control"
+      componentClass="textarea"
+      onChange={[Function]}
+      placeholder="contact information"
+      type="text"
+    />
+    <br />
+    <div>
+      <ControlLabel
+        bsClass="control-label"
+        srOnly={false}
+      >
+        Please rank the urgency of this bug on a scale of 1 through 5, where 1 is the least urgent, and 5 indicates that the bug is of immediate urgency.
+      </ControlLabel>
+      <br />
+      <span>
+        1
+      </span>
+      <input
+        name="urgency"
+        onClick={[Function]}
+        type="radio"
+        value="1"
+      />
+      <span>
+        2
+      </span>
+      <input
+        name="urgency"
+        onClick={[Function]}
+        type="radio"
+        value="2"
+      />
+      <span>
+        3
+      </span>
+      <input
+        name="urgency"
+        onClick={[Function]}
+        type="radio"
+        value="3"
+      />
+      <span>
+        4
+      </span>
+      <input
+        name="urgency"
+        onClick={[Function]}
+        type="radio"
+        value="4"
+      />
+      <span>
+        5
+      </span>
+      <input
+        name="urgency"
+        onClick={[Function]}
+        type="radio"
+        value="5"
+      />
+    </div>
+    <br />
+    <ControlLabel
+      bsClass="control-label"
+      className="message"
+      srOnly={false}
+    >
+      Please provide any information about the bug that we may use to help you:
+    </ControlLabel>
+    <br />
+    <FormControl
+      bsClass="form-control"
+      componentClass="textarea"
+      onChange={[Function]}
+      placeholder="Additional information..."
+      type="text"
+    />
+    <br />
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Submit Message
+    </Button>
+  </div>
+</div>
+`;
+
+exports[`UserResponses component renders correctly should match its empty snapshot 1`] = `
+<div
+  className="user-header"
+>
+  <h3>
+    Message Inbox
+  </h3>
+  <h4>
+    You will see responses to messages you have sent here.
+  </h4>
+  <Button
+    active={false}
+    block={false}
+    bsClass="btn"
+    bsStyle="primary"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Send a new message
+  </Button>
+  <div>
+    No responses yet. Please check back soon!
+  </div>
+</div>
+`;

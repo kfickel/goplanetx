@@ -30,37 +30,35 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
     className="user-message-ul"
   >
     <Message
-      key="0"
+      key="1"
       message={
         Object {
-          "createdAt": "10/20/2017",
+          "createdAt": 2017-11-30T00:04:40.750Z,
           "first_name": "Jane",
           "id": 1,
           "last_name": "Smith",
           "user_contact": "Test contact info",
           "user_message": "Test message",
-          "user_urgency": "3",
+          "user_urgency": 3,
         }
       }
       setResponseId={[Function]}
-      setStatus={[Function]}
       submitAdminResponse={[Function]}
     />
     <Message
-      key="1"
+      key="2"
       message={
         Object {
-          "createdAt": "10/19/2017",
+          "createdAt": 2017-11-30T00:04:40.750Z,
           "first_name": "Lady",
           "id": 2,
           "last_name": "Person",
           "user_contact": "Test contact info 2",
           "user_message": "Test message 2",
-          "user_urgency": "1",
+          "user_urgency": 1,
         }
       }
       setResponseId={[Function]}
-      setStatus={[Function]}
       submitAdminResponse={[Function]}
     />
   </ul>

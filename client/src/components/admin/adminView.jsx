@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 import Button from 'react-bootstrap/lib/Button';
 import Message from './message';
 
@@ -12,29 +13,29 @@ class AdminView extends React.Component {
       messages: [
         {
           id: 1,
-          createdAt: '10/20/2017',
+          createdAt: new Date(),
           first_name: 'Jane',
           last_name: 'Smith',
           user_message: 'Test message',
           user_contact: 'Test contact info',
-          user_urgency: '3',
+          user_urgency: 3,
         },
         {
           id: 2,
-          createdAt: '10/19/2017',
+          createdAt: new Date(),
           first_name: 'Lady',
           last_name: 'Person',
           user_message: 'Test message 2',
           user_contact: 'Test contact info 2',
-          user_urgency: '1',
+          user_urgency: 1,
         },
       ],
-      // messageId: null,
+      messageId: null,
       // response: '',
     };
 
-    this.setStatus = this.setStatus.bind(this);
     this.setResponseId = this.setResponseId.bind(this);
+    this.submitAdminResponse = this.submitAdminResponse.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +48,30 @@ class AdminView extends React.Component {
     });
   }
 
+  //  sets state variable messageId to currently selected message's id
+  setResponseId(id) {
+    this.setState({
+      messageId: id,
+    });
+  }
+
+  submitAdminResponse(response) {
+    $.ajax({
+      method: 'PATCH',
+      url: '/submissions',
+      data: {
+        id: this.state.messageId,
+        admin_response: response,
+      },
+      success: (data) => {
+        console.log(data);
+        alert('Your response was sent successfully');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
   // componentWillReceiveProps() {
   //   this.props.retrieveOpenMessages( (data) => {
   //     console.log('ADMIN MESSAGES', data);
@@ -57,17 +82,8 @@ class AdminView extends React.Component {
   //   });
   // }
 
-  // sets state variable messageId to currently selected message's id
-  // setResponseId(id) {
-  //   this.setState({
-  //     messageId: id,
-  //   });
-  // }
 
   // calls the markAsComplete method in index.jsx to send id and status to server
-  setStatus(id) {
-    this.props.markAsComplete(id);
-  }
 
 
   render() {
@@ -89,10 +105,10 @@ class AdminView extends React.Component {
         <ul className="user-message-ul">
           {this.state.messages.map(message => (
             <Message
-              submitAdminResponse={this.props.submitAdminResponse}
-              setStatus={this.setStatus}
+              submitAdminResponse={this.submitAdminResponse}
               key={message.id}
               message={message}
+              setResponseId={this.setResponseId}
             />
           ))}
         </ul>
@@ -104,9 +120,7 @@ class AdminView extends React.Component {
 
 AdminView.propTypes = {
   retrieveOpenMessages: PropTypes.func.isRequired,
-  markAsComplete: PropTypes.func.isRequired,
   showLogIn: PropTypes.func.isRequired,
-  submitAdminResponse: PropTypes.func.isRequired,
 };
 
 export default AdminView;
