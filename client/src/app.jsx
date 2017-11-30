@@ -180,10 +180,20 @@ class App extends React.Component {
   }
 
   showLogIn() {
-    this.setState({
-      view: 'login',
-      showBugButton: false,
-    });
+    if (this.state.view !== 'admin') {
+      this.setState({
+        view: 'login',
+        showBugButton: false,
+      });
+    } else {
+      console.log('\n HERE \n');
+      this.setState({
+        view: 'login',
+        showBugButton: false,
+      }, () => {
+        this.props.history.push('/admin');
+      });
+    }
   }
 
   showAdminLogIn() {
