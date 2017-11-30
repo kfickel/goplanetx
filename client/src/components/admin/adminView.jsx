@@ -31,6 +31,7 @@ class AdminView extends React.Component {
         },
       ],
       messageId: null,
+      search: '',
       // response: '',
     };
 
@@ -73,16 +74,12 @@ class AdminView extends React.Component {
       },
     });
   }
-  // componentWillReceiveProps() {
-  //   this.props.retrieveOpenMessages( (data) => {
-  //     console.log('ADMIN MESSAGES', data);
-  //     this.setState({
-  //       //may have to change 'data' depending on format
-  //       messages: data
-  //     });
-  //   });
-  // }
 
+  searchFilter(e) {
+    this.setState({
+      search: e.target.value,
+    });
+  }
 
   // calls the markAsComplete method in index.jsx to send id and status to server
 
@@ -102,7 +99,14 @@ class AdminView extends React.Component {
           <h3 className="welcome-header">Welcome to Your Inbox!</h3>
           <h4>You can view and respond to user messages here.</h4>
         </div>
-
+        <div>
+          <input
+            id="adminMessageSearch"
+            type="text"
+            placeholder="Search..."
+            onChange={this.searchFilter}
+          />
+        </div>
         <ul className="user-message-ul">
           {this.state.messages.map(message => (
             <Message
