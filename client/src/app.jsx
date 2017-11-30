@@ -41,6 +41,7 @@ class App extends React.Component {
     this.retrieveOpenMessages = this.retrieveOpenMessages.bind(this);
     this.retrieveResponses = this.retrieveResponses.bind(this);
     this.conditionalRender = this.conditionalRender.bind(this);
+    this.onLogoutUser = this.onLogoutUser.bind(this);
   }
 
   componentDidMount() {
@@ -205,6 +206,9 @@ class App extends React.Component {
     this.setState({ showBugButton: true });
   }
 
+  onLogoutUser() {
+    this.setState({ view: 'restricted' });
+  }
 
   conditionalRender() {
     if (this.state.showBugButton === true) {
@@ -267,6 +271,7 @@ class App extends React.Component {
             <Submission
               sendMessage={this.sendMessage}
               showAdminResponses={this.showAdminResponses}
+              onLogoutUser={this.onLogoutUser}
             />
           </div>
         </div>
