@@ -88,8 +88,8 @@ module.exports = {
             username: req.query.username,
           },
         })
-          .then((user) => {
-            return db.Submission.findAll({
+          .then(user => (
+            db.Submission.findAll({
               where: {
                 // Note: userId is the FK in the submission model that points to a particular user
                 userId: user.get('id'),
@@ -97,8 +97,8 @@ module.exports = {
                 //   [Op.not]: null
                 // }
               },
-            });
-          })
+            })
+          ))
           .then((userMessages) => {
             console.log('Fetched all msgs for user with', userMessages);
             res.status(200).json(userMessages);
