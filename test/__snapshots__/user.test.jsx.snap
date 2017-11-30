@@ -369,6 +369,16 @@ exports[`Submission component renders correctly should match its empty snapshot 
     >
       Submit Message
     </Button>
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="primary"
+      className="logout"
+      disabled={false}
+    >
+      Logout
+    </Button>
   </div>
 </div>
 `;
