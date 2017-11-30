@@ -174,4 +174,14 @@ module.exports = {
       // }
     },
   },
+  users: {
+    get: (req, res) => {
+      db.User.findAll()
+        .then(users => res.send(users));
+    },
+    patch: ({ body: { id, account_type } }, res) => {
+      db.User.update({ account_type }, { where: { id }, fields: ['account_type'] })
+        .then(() => res.end());
+    },
+  },
 };

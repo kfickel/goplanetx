@@ -255,7 +255,11 @@ ol, ul {
   margin-right: 10px;
 }
 
-
+.user-entry {
+  border: 1px solid black;
+  margin-top: 2px;
+  padding: 5px;
+}
 
 
 
