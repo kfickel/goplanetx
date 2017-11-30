@@ -274,12 +274,45 @@ ol, ul {
   margin-right: 10px;
 }
 
-.user-entry {
-  border: 1px solid black;
-  margin-top: 2px;
+/*====ADMIN USER SETTINGS====*/
+
+#users {
+  text-align: center;
+}
+
+#user-search {
+  margin: auto 0;
+  width: 450px;
   padding: 5px;
 }
 
+.user-entry {
+  float: center;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 2px;
+  padding: 5px;
+  width: 600px;
+  text-align: left;
+}
 
+.users-entry-enter {
+  transform: translate(200%);
+}
+.users-entry-enter.users-entry-enter-active {
+  transform: translate(0%);
+  transition: transform 200ms ease-in-out;
+}
+.users-entry-leave {
+  transform: translate(0%);
+}
+.users-entry-leave.users-entry-leave-active {
+  transform: translate(-200%);
+  transition: transform 200ms ease-in-out;
+}
+
+.account-type {
+  float: right;
+}
 
 
