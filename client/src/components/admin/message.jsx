@@ -99,7 +99,6 @@ class Message extends React.Component {
             <Response
               messageName={this.state.messageName}
               messageId={this.state.messageId}
-              submitAdminResponse={this.props.submitAdminResponse}
             />
           </div>
         </div>
@@ -156,7 +155,6 @@ Message.propTypes = {
     createdAt: PropTypes.string,
   }).isRequired,
   setResponseId: PropTypes.func.isRequired,
-  submitAdminResponse: PropTypes.func.isRequired,
 };
 
 export default Message;
