@@ -121,7 +121,7 @@ class Submission extends React.Component {
           />
           <br />
           <Button bsStyle="primary" onClick={this.onSubmit}>Submit Message</Button>
-
+          <Button bsStyle="primary" className="logout" onClick={this.props.onLogoutUser}>Logout</Button>
         </div>
 
       </div>
@@ -132,6 +132,7 @@ class Submission extends React.Component {
 Submission.propTypes = {
   sendMessage: PropTypes.func.isRequired,
   showAdminResponses: PropTypes.func.isRequired,
+  onLogoutUser: PropTypes.func.isRequired,
 };
 
 export default Submission;

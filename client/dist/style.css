@@ -129,6 +129,10 @@ ol, ul {
   margin: 0 1%;
 }
 
+.logout {
+  float: right;
+}
+
 /*====ADMIN====*/
 
 .admin-header {
