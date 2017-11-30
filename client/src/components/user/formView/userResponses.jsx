@@ -38,13 +38,15 @@ class UserResponses extends React.Component {
           </Button>
           <ul>
             {this.state.responses
-              .sort((a, b) => b.admin_response === null || a.admin_complete - b.admin_complete)
+              .sort((a, b) => b.admin_response === null
+                || a.admin_complete - b.admin_complete
+                || b.id - a.id)
               .map(response => (
-              <Response
-                showSubmissionForm={this.props.showSubmissionForm}
-                key={JSON.stringify(response)}
-                response={response}
-              />
+                <Response
+                  showSubmissionForm={this.props.showSubmissionForm}
+                  key={JSON.stringify(response)}
+                  response={response}
+                />
             ))}
           </ul>
         </div>
