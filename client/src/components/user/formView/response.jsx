@@ -13,7 +13,10 @@ function Response(props) {
   // Render all admin responses for this user in reverse
   // chronological order of original message submission date
   return (
-    <div className="admin-response-container group">
+    <div className={'admin-response-container group ' +
+      (props.response.admin_response ? 'response ' : '') +
+      (props.response.admin_complete ? 'complete' : '')}
+    >
       <div className="response-contents group">
         <span className="message-created-at">Created: </span>
         <p>{moment(props.response.updatedAt).format('MMMM Do YYYY, h:mm a')}</p>
@@ -44,6 +47,7 @@ Response.propTypes = {
     updatedAt: PropTypes.string,
     user_message: PropTypes.string,
     admin_response: PropTypes.string,
+    admin_complete: PropTypes.boolean,
   }).isRequired,
   showSubmissionForm: PropTypes.func.isRequired,
 };

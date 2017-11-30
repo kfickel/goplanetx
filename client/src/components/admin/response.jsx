@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
@@ -21,12 +22,31 @@ class Response extends React.Component {
     });
   }
 
+  submitAdminResponse(id, response) {
+    console.log('RESPONSE', response);
+    $.ajax({
+      method: 'PATCH',
+      url: '/submissions',
+      data: {
+        id,
+        admin_response: response,
+      },
+      success: (data) => {
+        console.log(data);
+        alert('Your response was sent successfully');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
   // when admin submits a response,
   // calls the submitAdminResponse method to send id and response to server as a patch request
   sendResponse() {
   // console.log(`RESPONSE VARS:  ${this.props.messageId},
   // ${this.state.response}, ${this.props.messageName}`);
-    this.props.submitAdminResponse(this.state.response);
+    this.submitAdminResponse(this.props.messageId, this.state.response);
   }
 
   render() {
@@ -53,8 +73,8 @@ class Response extends React.Component {
 }
 
 Response.propTypes = {
-  submitAdminResponse: PropTypes.func.isRequired,
   messageName: PropTypes.string.isRequired,
+  messageId: PropTypes.number.isRequired,
 };
 
 export default Response;

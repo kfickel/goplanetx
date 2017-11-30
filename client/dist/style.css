@@ -199,6 +199,14 @@ ol, ul {
 /*  box-shadow: 5px 5px 2px 0px #323B4A;
 */}
 
+.admin-response-container.response {
+  border: 5px solid #4B586E;
+}
+
+.admin-response-container.complete {
+  border: 0.25px solid #4B586E;
+}
+
 .admin-response-container span {
   padding-left: 10px;
   margin-bottom: 5px;

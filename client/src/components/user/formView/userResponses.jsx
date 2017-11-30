@@ -37,12 +37,15 @@ class UserResponses extends React.Component {
           Send a new message
           </Button>
           <ul>
-            {this.state.responses.map(response => (
-              <Response
-                showSubmissionForm={this.props.showSubmissionForm}
-                key={JSON.stringify(response)}
-                response={response}
-              />
+            {this.state.responses
+              .sort((a, b) => a.admin_complete - b.admin_complete
+                || Date.parse(b.createdAt) - Date.parse(a.createdAt))
+              .map(response => (
+                <Response
+                  showSubmissionForm={this.props.showSubmissionForm}
+                  key={JSON.stringify(response)}
+                  response={response}
+                />
             ))}
           </ul>
         </div>
