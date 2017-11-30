@@ -139,6 +139,16 @@ ol, ul {
   text-align: center;
 }
 
+.admin-msg-search {
+  text-align: center;
+}
+
+#adminMessageSearch {
+  margin: auto 0;
+  width: 450px;
+  padding: 5px;
+}
+
 .user-message-container {
   margin: 5px 50px 5px 0;
   border: 0.25px solid #4B586E;
@@ -178,6 +188,7 @@ ol, ul {
   padding: 20px 10%;
   border: none;
 }
+
 
 /*====USER====*/
 .admin-response-container {
@@ -260,6 +271,7 @@ ol, ul {
   margin-top: 2px;
   padding: 5px;
 }
+
 
 
 
