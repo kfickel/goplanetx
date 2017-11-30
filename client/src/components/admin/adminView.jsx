@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
 import Button from 'react-bootstrap/lib/Button';
 import Message from './message';
 
@@ -36,7 +35,6 @@ class AdminView extends React.Component {
     };
 
     this.setResponseId = this.setResponseId.bind(this);
-    this.submitAdminResponse = this.submitAdminResponse.bind(this);
     this.searchFilter = this.searchFilter.bind(this);
   }
 
@@ -57,24 +55,15 @@ class AdminView extends React.Component {
     });
   }
 
-  submitAdminResponse(response) {
-    console.log('RESPONSE', response);
-    $.ajax({
-      method: 'PATCH',
-      url: '/submissions',
-      data: {
-        id: this.state.messageId,
-        admin_response: response,
-      },
-      success: (data) => {
-        console.log(data);
-        alert('Your response was sent successfully');
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
+  // componentWillReceiveProps() {
+  //   this.props.retrieveOpenMessages( (data) => {
+  //     console.log('ADMIN MESSAGES', data);
+  //     this.setState({
+  //       //may have to change 'data' depending on format
+  //       messages: data
+  //     });
+  //   });
+  // }
 
   searchFilter(e) {
     console.log('SEARCH ', e.target.value);

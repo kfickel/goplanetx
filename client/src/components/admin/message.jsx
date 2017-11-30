@@ -29,6 +29,7 @@ class Message extends React.Component {
   // Call initiateResponse in adminView with this message's id
   // Nice to have: indicate which response is being responded to
   onRespondClick() {
+    console.log('respond click', this.state.messageId)
     this.props.setResponseId(this.state.messageId);
     this.setState({
       showResponseForm: !this.state.showResponseForm,
@@ -156,7 +157,6 @@ Message.propTypes = {
     createdAt: PropTypes.string,
   }).isRequired,
   setResponseId: PropTypes.func.isRequired,
-  submitAdminResponse: PropTypes.func.isRequired,
 };
 
 export default Message;
