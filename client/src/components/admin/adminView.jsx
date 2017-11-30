@@ -31,11 +31,13 @@ class AdminView extends React.Component {
         },
       ],
       messageId: null,
+      search: '',
       // response: '',
     };
 
     this.setResponseId = this.setResponseId.bind(this);
     this.submitAdminResponse = this.submitAdminResponse.bind(this);
+    this.searchFilter = this.searchFilter.bind(this);
   }
 
   componentDidMount() {
@@ -73,16 +75,13 @@ class AdminView extends React.Component {
       },
     });
   }
-  // componentWillReceiveProps() {
-  //   this.props.retrieveOpenMessages( (data) => {
-  //     console.log('ADMIN MESSAGES', data);
-  //     this.setState({
-  //       //may have to change 'data' depending on format
-  //       messages: data
-  //     });
-  //   });
-  // }
 
+  searchFilter(e) {
+    console.log('SEARCH ', e.target.value);
+    this.setState({
+      search: e.target.value,
+    });
+  }
 
   // calls the markAsComplete method in index.jsx to send id and status to server
 
@@ -102,9 +101,20 @@ class AdminView extends React.Component {
           <h3 className="welcome-header">Welcome to Your Inbox!</h3>
           <h4>You can view and respond to user messages here.</h4>
         </div>
-
+        <div className="admin-msg-search">
+          <input
+            id="adminMessageSearch"
+            type="text"
+            placeholder="Search..."
+            onChange={this.searchFilter}
+          />
+        </div>
         <ul className="user-message-ul">
-          {this.state.messages.map(message => (
+          {this.state.messages.filter(message => (
+            // console.log('user message ', message.user_message)
+            message.user_message.toLowerCase().includes(this.state.search.toLowerCase()) ||
+            (`${message.first_name.toLowerCase()} ${message.last_name.toLowerCase()}`).includes(this.state.search.toLowerCase())
+          )).map(message => (
             <Message
               submitAdminResponse={this.submitAdminResponse}
               key={message.id}

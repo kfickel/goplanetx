@@ -26,6 +26,16 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
       You can view and respond to user messages here.
     </h4>
   </div>
+  <div
+    className="admin-msg-search"
+  >
+    <input
+      id="adminMessageSearch"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+    />
+  </div>
   <ul
     className="user-message-ul"
   >
