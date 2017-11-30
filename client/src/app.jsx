@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
 import Game from './components/user/tictactoeView/game';
 import Login from './components/user/formView/login';
@@ -59,6 +60,9 @@ class App extends React.Component {
   }
 
   // MAKE SURE THIS INTERACTS CORRECTLY WITH SERVER/DB
+  onLogoutUser() {
+    this.setState({ view: 'restricted' });
+  }
 
   createUser(username, hash, admin, firstName, lastName) {
     console.log(` ${username}, ${hash}, ${admin} posted to server`);
@@ -104,6 +108,10 @@ class App extends React.Component {
           view: 'submission',
           username: data.username,
           type: data.account_type,
+        }, () => {
+          if (this.state.type === 'admin') {
+            this.props.history.push('/admin/messages');
+          }
         });
         console.log('LOGIN STATE', this.state);
       },
@@ -206,10 +214,6 @@ class App extends React.Component {
     this.setState({ showBugButton: true });
   }
 
-  onLogoutUser() {
-    this.setState({ view: 'restricted' });
-  }
-
   conditionalRender() {
     if (this.state.showBugButton === true) {
       return (
@@ -257,11 +261,6 @@ class App extends React.Component {
           </div>
         </div>
       );
-    } else if (this.state.view === 'submission' && this.state.type === 'admin') {
-      return (
-        <div>
-          <AdminView showLogIn={this.showLogIn} retrieveOpenMessages={this.retrieveOpenMessages} />
-        </div>);
     } else if (this.state.view === 'submission') {
       return (
         <div>
@@ -302,9 +301,18 @@ class App extends React.Component {
       <Switch>
         <Route exact path="/" render={this.conditionalRender} />
         <Route
-          path="/admin"
+          exact path="/admin"
           render={() => (
             <AdminLogin showSignUp={this.showSignUp} logInUser={this.logInUser} />
+          )}
+        />
+        <Route
+          path="/admin/messages"
+          render={() => (
+            <AdminView
+              showLogIn={this.showLogIn}
+              retrieveOpenMessages={this.retrieveOpenMessages}
+            />
           )}
         />
       </Switch>
@@ -312,4 +320,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default withRouter(App);
