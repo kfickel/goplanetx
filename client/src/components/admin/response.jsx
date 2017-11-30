@@ -54,7 +54,7 @@ class Response extends React.Component {
 
 Response.propTypes = {
   submitAdminResponse: PropTypes.func.isRequired,
-  messageId: PropTypes.string.isRequired,
+  messageId: PropTypes.number.isRequired,
   messageName: PropTypes.string.isRequired,
 };
 

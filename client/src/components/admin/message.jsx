@@ -15,7 +15,7 @@ class Message extends React.Component {
       messageName: `${props.message.first_name} ${props.message.last_name}`,
       showResponseForm: false,
     };
-    this.onCompleteCheck = this.onCompleteCheck.bind(this);
+    this.markAsComplete = this.markAsComplete.bind(this);
     this.onRespondClick = this.onRespondClick.bind(this);
   }
 
@@ -33,9 +33,9 @@ class Message extends React.Component {
     this.setState({
       showResponseForm: !this.state.showResponseForm,
     });
-    if (this.props.admin_response === null) {
-      alert('null');
-    }
+    // if (this.props.message.admin_response === null) {
+    //   alert('null');
+    // }
   }
 
   markAsComplete() {
@@ -157,7 +157,6 @@ Message.propTypes = {
   }).isRequired,
   setResponseId: PropTypes.func.isRequired,
   submitAdminResponse: PropTypes.func.isRequired,
-  admin_response: PropTypes.string.isRequired,
 };
 
 export default Message;

@@ -41,7 +41,7 @@ function Response(props) {
 
 Response.propTypes = {
   response: PropTypes.shape({
-    updatedAt: PropTypes.instanceOf(Date),
+    updatedAt: PropTypes.string,
     user_message: PropTypes.string,
     admin_response: PropTypes.string,
   }).isRequired,

@@ -13,21 +13,21 @@ class AdminView extends React.Component {
       messages: [
         {
           id: 1,
-          createdAt: '10/20/2017',
+          createdAt: new Date(),
           first_name: 'Jane',
           last_name: 'Smith',
           user_message: 'Test message',
           user_contact: 'Test contact info',
-          user_urgency: '3',
+          user_urgency: 3,
         },
         {
           id: 2,
-          createdAt: '10/19/2017',
+          createdAt: new Date(),
           first_name: 'Lady',
           last_name: 'Person',
           user_message: 'Test message 2',
           user_contact: 'Test contact info 2',
-          user_urgency: '1',
+          user_urgency: 1,
         },
       ],
       messageId: null,
@@ -108,6 +108,7 @@ class AdminView extends React.Component {
               submitAdminResponse={this.submitAdminResponse}
               key={message.id}
               message={message}
+              setResponseId={this.setResponseId}
             />
           ))}
         </ul>

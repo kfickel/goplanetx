@@ -1,14 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Game from '../client/src/components/user/tictactoeView/game';
-import Board from '../client/src/components/user/tictactoeView/board';
-import HotSquare from '../client/src/components/user/tictactoeView/board';
+import { Board, HotSquare } from '../client/src/components/user/tictactoeView/board';
 
 /* TEST GAME COMPONENT */
 
 describe('Component: Game', () => {
   it('should match its empty snapshot', () => {
-    const component = shallow(<Game />);
+    const component = shallow(<Game unlockForms={() => {}} />);
     expect(component).toMatchSnapshot();
   });
 });
@@ -27,7 +26,7 @@ describe('Component: Board', () => {
 
   it('should match its empty snapshot', () => {
     const component = shallow((
-      <Board squares={squares} onClick={handleClick} unlockForms={unlockForms} />
+      <Board squares={squares} onClick={handleClick} unlockForms={unlockForms} value="x" />
     ));
     expect(component).toMatchSnapshot();
   });

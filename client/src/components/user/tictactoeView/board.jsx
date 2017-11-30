@@ -79,20 +79,29 @@ class Board extends React.Component {
 
 Square.propTypes = {
   onClick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+Square.defaultProps = {
+  value: null,
 };
 
 HotSquare.propTypes = {
   onClick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+HotSquare.defaultProps = {
+  value: null,
 };
 
 Board.propTypes = {
   onClick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
   unlockForms: PropTypes.func.isRequired,
-  squares: PropTypes.shape([]).isRequired,
+  squares: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default Board;
-export default HotSquare;
+export {
+  Board,
+  HotSquare,
+}

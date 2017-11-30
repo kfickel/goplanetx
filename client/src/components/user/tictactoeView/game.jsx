@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Board from './board';
+import { Board } from './board';
 
 function calculateWinner(squares) {
   const lines = [
@@ -111,8 +111,11 @@ class Game extends React.Component {
 }
 
 Game.propTypes = {
-  unlockForms: PropTypes.func.isRequired,
+  unlockForms: PropTypes.func,
+};
+
+Game.defaultProps = {
+  unlockForms: () => {},
 };
 
 export default Game;
-
