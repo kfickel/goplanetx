@@ -38,9 +38,8 @@ class UserResponses extends React.Component {
           </Button>
           <ul>
             {this.state.responses
-              .sort((a, b) => b.admin_response === null
-                || a.admin_complete - b.admin_complete
-                || b.id - a.id)
+              .sort((a, b) => a.admin_complete - b.admin_complete
+                || Date.parse(b.createdAt) - Date.parse(a.createdAt))
               .map(response => (
                 <Response
                   showSubmissionForm={this.props.showSubmissionForm}
