@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
 import Button from 'react-bootstrap/lib/Button';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -87,7 +86,8 @@ class Submission extends React.Component {
           <br />
           <FormControl
             componentClass="textarea"
-            onChange={this.updateContact}type="text"
+            onChange={this.updateContact}
+            type="text"
             placeholder="contact information"
           />
           <br />
