@@ -89,7 +89,7 @@ class Message extends React.Component {
             </Checkbox>
             <Button
               bsStyle="primary"
-              onClick={this.markAsComplete}
+              onClick={this.onRespondClick}
               className="admin-response-button"
             >
             Hide Response Form
@@ -153,7 +153,7 @@ Message.propTypes = {
     user_contact: PropTypes.string,
     user_message: PropTypes.string,
     admin_response: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date),
+    createdAt: PropTypes.string,
   }).isRequired,
   setResponseId: PropTypes.func.isRequired,
   submitAdminResponse: PropTypes.func.isRequired,

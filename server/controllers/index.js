@@ -74,8 +74,9 @@ module.exports = {
           },
         })
           .then((allMessages) => {
-            console.log('Fetched all msgs for admin with', allMessages);
-            res.status(200).json(allMessages);
+            // console.log('Fetched all msgs for admin with', allMessages);
+            console.log(typeof allMessages[0].createdAt);
+            res.status(200).send(allMessages);
           })
           .catch((err) => {
             console.log('Error fetching msgs for admin with', err);

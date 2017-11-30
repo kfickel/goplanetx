@@ -13,7 +13,7 @@ class AdminView extends React.Component {
       messages: [
         {
           id: 1,
-          createdAt: new Date(),
+          createdAt: '2017-11-30T00:49:35.000Z',
           first_name: 'Jane',
           last_name: 'Smith',
           user_message: 'Test message',
@@ -22,7 +22,7 @@ class AdminView extends React.Component {
         },
         {
           id: 2,
-          createdAt: new Date(),
+          createdAt: '2017-11-30T00:49:35.000Z',
           first_name: 'Lady',
           last_name: 'Person',
           user_message: 'Test message 2',
@@ -56,6 +56,7 @@ class AdminView extends React.Component {
   }
 
   submitAdminResponse(response) {
+    console.log('RESPONSE', response);
     $.ajax({
       method: 'PATCH',
       url: '/submissions',
