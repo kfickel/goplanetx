@@ -59,7 +59,6 @@ class AdminView extends React.Component {
 
   addEmail() {
     const email = prompt('Add your email');
-    console.log('email ', email, 'username ', this.props.username);
     $.ajax({
       method: 'PATCH',
       url: '/email',
