@@ -131,7 +131,7 @@ module.exports = {
               last_name: user.get('last_name'),
             })
           ))
-          .then((createdMessage) => {
+          .then(() => {
             db.User.findAll({
               attributes: ['email'],
             })
