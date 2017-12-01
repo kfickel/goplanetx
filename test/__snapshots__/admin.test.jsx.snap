@@ -39,50 +39,112 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
     </h4>
   </div>
   <div
-    className="admin-msg-search"
+    className="message-container-header"
   >
-    <input
-      id="adminMessageSearch"
-      onChange={[Function]}
-      placeholder="Search..."
-      type="text"
-    />
+    <SplitButton
+      id="message-sort"
+      onClick={[Function]}
+      onSelect={[Function]}
+      title="Order"
+    >
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="createdAt"
+      >
+        Created
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="first_name"
+      >
+        First Name
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="last_name"
+      >
+        Last Name
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="user_urgency"
+      >
+        Urgency
+      </MenuItem>
+    </SplitButton>
+    <div
+      className="admin-msg-search"
+    >
+      <input
+        id="adminMessageSearch"
+        onChange={[Function]}
+        placeholder="Search..."
+        type="text"
+      />
+    </div>
   </div>
   <ul
     className="user-message-ul"
   >
-    <Message
-      key="1"
-      message={
-        Object {
-          "createdAt": "2017-11-30T00:49:35.000Z",
-          "first_name": "Jane",
-          "id": 1,
-          "last_name": "Smith",
-          "user_contact": "Test contact info",
-          "user_message": "Test message",
-          "user_urgency": 3,
+    <FlipMovePropConverter
+      delay={0}
+      disableAllAnimations={false}
+      duration={350}
+      easing="ease-in-out"
+      enterAnimation="elevator"
+      getPosition={[Function]}
+      leaveAnimation="elevator"
+      maintainContainerHeight={false}
+      staggerDelayBy={0}
+      staggerDurationBy={0}
+      typeName="div"
+      verticalAlignment="top"
+    >
+      <Message
+        key="1"
+        message={
+          Object {
+            "createdAt": "2017-11-30T00:49:35.000Z",
+            "first_name": "Jane",
+            "id": 1,
+            "last_name": "Smith",
+            "user_contact": "Test contact info",
+            "user_message": "Test message",
+            "user_urgency": 3,
+          }
         }
-      }
-      setResponseId={[Function]}
-      submitAdminResponse={[Function]}
-    />
-    <Message
-      key="2"
-      message={
-        Object {
-          "createdAt": "2017-11-30T00:49:35.000Z",
-          "first_name": "Lady",
-          "id": 2,
-          "last_name": "Person",
-          "user_contact": "Test contact info 2",
-          "user_message": "Test message 2",
-          "user_urgency": 1,
+        setResponseId={[Function]}
+        submitAdminResponse={[Function]}
+      />
+      <Message
+        key="2"
+        message={
+          Object {
+            "createdAt": "2017-11-30T00:49:35.000Z",
+            "first_name": "Lady",
+            "id": 2,
+            "last_name": "Person",
+            "user_contact": "Test contact info 2",
+            "user_message": "Test message 2",
+            "user_urgency": 1,
+          }
         }
-      }
-      setResponseId={[Function]}
-      submitAdminResponse={[Function]}
-    />
+        setResponseId={[Function]}
+        submitAdminResponse={[Function]}
+      />
+    </FlipMovePropConverter>
   </ul>
 </div>
 `;
