@@ -19,6 +19,7 @@ class App extends React.Component {
     this.state = {
       username: '',
       type: '',
+      session: '',
       // showForms: false,
       // Possible view values:
       // restricted: only render game
@@ -111,9 +112,12 @@ class App extends React.Component {
           view: 'submission',
           username: data.username,
           type: data.account_type,
+          session: window.sessionStorage.setItem('type', this.state.type),
         }, () => {
           if (this.state.type === 'admin' || this.state.type === 'responder') {
             this.props.history.push('/admin/messages');
+          } else if (this.state.type === 'user') {
+            this.props.history.push('/');
           }
         });
         console.log('LOGIN STATE', this.state);
