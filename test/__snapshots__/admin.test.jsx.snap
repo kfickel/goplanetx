@@ -12,7 +12,19 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
     disabled={false}
     onClick={[Function]}
   >
-    Sign In as a Different User
+    Logout
+  </Button>
+  <Button
+    active={false}
+    block={false}
+    bsClass="btn"
+    bsSize="small"
+    bsStyle="primary"
+    className="admin-change-user-button"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Click for email notifications
   </Button>
   <div
     className="admin-header group"
@@ -53,6 +65,7 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
         }
       }
       setResponseId={[Function]}
+      submitAdminResponse={[Function]}
     />
     <Message
       key="2"
@@ -68,6 +81,7 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
         }
       }
       setResponseId={[Function]}
+      submitAdminResponse={[Function]}
     />
   </ul>
 </div>

@@ -16,6 +16,7 @@ const User = db.define('user', {
   account_type: Sequelize.STRING,
   first_name: Sequelize.STRING,
   last_name: Sequelize.STRING,
+  email: Sequelize.STRING,
 });
 
 

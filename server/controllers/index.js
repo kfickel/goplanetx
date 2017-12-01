@@ -23,6 +23,7 @@ module.exports = {
             account_type: req.body.account_type,
             first_name: req.body.first_name,
             last_name: req.body.last_name,
+            email: req.body.email,
           },
         })
           .spread((user, created) => {
@@ -181,6 +182,12 @@ module.exports = {
     },
     patch: ({ body: { id, account_type } }, res) => {
       db.User.update({ account_type }, { where: { id }, fields: ['account_type'] })
+        .then(() => res.end());
+    },
+  },
+  email: {
+    patch: ({ body: { username, email } }, res) => {
+      db.User.update({ email }, { where: { username }, fields: ['email'] })
         .then(() => res.end());
     },
   },

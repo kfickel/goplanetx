@@ -77,6 +77,7 @@ class App extends React.Component {
         account_type: admin,
         first_name: firstName,
         last_name: lastName,
+        email: '',
       },
       success: () => {
         alert('You have successfully created an account');
@@ -160,7 +161,7 @@ class App extends React.Component {
   }
 
   retrieveOpenMessages(callback) {
-    console.log('in retrieveAllResponses');
+    console.log('in retrieveAllResponses', this.state.username);
     $.ajax({
       method: 'GET',
       url: `/submissions?username=${this.state.username}&account_type=${this.state.type}`,
@@ -325,6 +326,7 @@ class App extends React.Component {
             <AdminView
               showLogIn={this.showLogIn}
               retrieveOpenMessages={this.retrieveOpenMessages}
+              username={this.state.username}
             />
           )}
         />
