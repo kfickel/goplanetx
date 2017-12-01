@@ -294,6 +294,7 @@ class App extends React.Component {
             <UserResponses
               showSubmissionForm={this.showSubmissionForm}
               retrieveResponses={this.retrieveResponses}
+              onLogoutUser={this.onLogoutUser}
             />
           </div>
         </div>

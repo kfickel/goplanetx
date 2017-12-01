@@ -53,7 +53,6 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
         }
       }
       setResponseId={[Function]}
-      submitAdminResponse={[Function]}
     />
     <Message
       key="2"
@@ -69,7 +68,6 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
         }
       }
       setResponseId={[Function]}
-      submitAdminResponse={[Function]}
     />
   </ul>
 </div>

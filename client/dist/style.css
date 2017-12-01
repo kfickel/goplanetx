@@ -133,6 +133,12 @@ ol, ul {
   float: right;
 }
 
+.messages-logout {
+  text-align: center;
+  /*margin: 30px auto 100px auto;*/
+  width: 20%;
+}
+
 /*====ADMIN====*/
 
 .admin-header {
