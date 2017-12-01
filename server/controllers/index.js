@@ -135,9 +135,7 @@ module.exports = {
             attributes: ['email'],
           })
             .then((users) => {
-              console.log('\nUSERS \n\n', users);
               users.forEach((user) => {
-                console.log('\n\nUSER\n ', user.dataValues);
                 if (user.dataValues.email !== null || user.dataValues.email !== '') {
                   sendmail({
                     from: 'no-reply@sesame.com',
