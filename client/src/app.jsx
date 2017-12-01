@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import $ from 'jquery';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
+import { Jumbotron } from 'reactstrap';
 import Game from './components/user/tictactoeView/game';
 import Login from './components/user/formView/login';
 import Signup from './components/user/formView/signup';
@@ -268,7 +269,9 @@ class App extends React.Component {
     } else if (this.state.view === 'login') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+          </Jumbotron>
           <Game />
           <div>
             <Login logInUser={this.logInUser} showSignUp={this.showSignUp} />
@@ -278,7 +281,13 @@ class App extends React.Component {
     } else if (this.state.view === 'signup') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button bsStyle="primary">Play a Friend</Button>
+              <Button bsStyle="primary">Play the Computer</Button>
+            </p>
+          </Jumbotron>
           <Game />
           <div>
             <Signup createUser={this.createUser} showLogIn={this.showLogIn} />
@@ -288,7 +297,13 @@ class App extends React.Component {
     } else if (this.state.view === 'submission') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button bsStyle="primary">Play a Friend</Button>
+              <Button bsStyle="primary">Play the Computer</Button>
+            </p>
+          </Jumbotron>
           <Game />
           <div>
             <Submission
@@ -315,7 +330,13 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h1 className="main-title">Tic Tac Toe</h1>
+        <Jumbotron>
+          <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+          <p>
+            <Button bsStyle="primary">Play a Friend</Button>
+            <Button bsStyle="primary">Play the Computer</Button>
+          </p>
+        </Jumbotron>
         <Game unlockForms={this.unlockForms} />
       </div>
     );

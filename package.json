@@ -34,6 +34,7 @@
     "react-dom": "^16.1.1",
     "react-flip-move": "^2.10.0",
     "react-router-dom": "^4.2.2",
+    "reactstrap": "^4.8.0",
     "save-dev": "^2.0.0",
     "sendmail": "^1.2.0",
     "sequelize": "^4.22.12"
