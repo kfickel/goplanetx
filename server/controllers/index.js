@@ -27,9 +27,7 @@ module.exports = {
             email: req.body.email,
           },
         })
-          .spread((user, created) => {
-            console.log('User created with', user.get({ plain: true }));
-            console.log(user);
+          .spread((created) => {
             res.sendStatus(created ? 201 : 200);
           })
           .catch((error) => {
@@ -51,10 +49,8 @@ module.exports = {
         .then((user) => {
           bcrypt.compare(req.body.hash, user.get('hash'), (err, result) => {
             if (result) {
-              console.log('Successful authentication with', user.get('username'), user.get('account_type'));
               res.status(201).json({ username: user.get('username'), account_type: user.get('account_type') });
             } else {
-              console.log('incorrect login details for ', req.body.username);
               res.sendStatus(400);
             }
           });
@@ -75,8 +71,6 @@ module.exports = {
           },
         })
           .then((allMessages) => {
-            // console.log('Fetched all msgs for admin with', allMessages);
-            console.log(typeof allMessages[0].createdAt);
             res.status(200).send(allMessages);
           })
           .catch((err) => {
@@ -101,7 +95,6 @@ module.exports = {
             })
           ))
           .then((userMessages) => {
-            console.log('Fetched all msgs for user with', userMessages);
             res.status(200).json(userMessages);
           })
           .catch((err) => {
@@ -157,9 +150,6 @@ module.exports = {
     },
     // allows an admin to edit most recent submission associated with a user
     patch: (req, res) => {
-      console.log('ADMIN PATCH WITH ', req.body);
-      // if (req.body.account_type === 'admin') {
-      // find message by message id
       db.Submission.findOne({
         where: {
           id: req.body.id,
@@ -172,18 +162,13 @@ module.exports = {
             admin_complete: req.body.admin_complete,
           })
         ))
-        .then((updatedMessage) => {
-          console.log('Successful message update with', updatedMessage);
+        .then(() => {
           res.sendStatus(201);
         })
         .catch((err) => {
           console.log('Error amending user message with', err);
           res.sendStatus(400);
         });
-      // } else {
-      //   console.log('Only admins can amend messages');
-      //   res.sendStatus(400);
-      // }
     },
   },
   users: {
