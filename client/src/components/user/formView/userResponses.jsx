@@ -29,13 +29,15 @@ class UserResponses extends React.Component {
         <div className="user-header">
           <PageHeader>Message Inbox</PageHeader>
           <h5>You will see responses to messages you have sent here.</h5>
-          <Button
-            className="change-view-button"
-            bsStyle="primary"
-            onClick={this.props.showSubmissionForm}
-          >
-          Send a new message
-          </Button>
+          <div>
+            <Button
+              className="change-view-button"
+              bsStyle="primary"
+              onClick={this.props.showSubmissionForm}
+            >
+            Send a new message
+            </Button>
+          </div>
           <ul>
             {this.state.responses
               .sort((a, b) => a.admin_complete - b.admin_complete
@@ -48,6 +50,15 @@ class UserResponses extends React.Component {
                 />
             ))}
           </ul>
+          <div>
+            <Button
+              bsStyle="primary"
+              className="messages-logout"
+              onClick={this.props.onLogoutUser}
+            >
+              Logout
+            </Button>
+          </div>
         </div>
       );
     }
@@ -70,6 +81,7 @@ class UserResponses extends React.Component {
 UserResponses.propTypes = {
   showSubmissionForm: PropTypes.func.isRequired,
   retrieveResponses: PropTypes.func.isRequired,
+  onLogoutUser: PropTypes.func.isRequired,
 };
 
 export default UserResponses;
