@@ -111,8 +111,10 @@ class Game extends React.Component {
               </div>
             </div>
           </Col>
-          <Col sm={3}>Player 2:
-            <Input type="text" id="player1" placeholder="Player 2 Name" />
+          <Col sm={3}>
+            {this.props.twoPlayers ?
+              (<Input type="text" id="player1" placeholder="Player 2 Name" />)
+              : 'Computer' }
           </Col>
         </Row>
       </Container>
@@ -122,6 +124,7 @@ class Game extends React.Component {
 
 Game.propTypes = {
   unlockForms: PropTypes.func,
+  twoPlayers: PropTypes.bool.isRequired,
 };
 
 Game.defaultProps = {

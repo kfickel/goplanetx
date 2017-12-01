@@ -290,8 +290,12 @@ class App extends React.Component {
           <Jumbotron>
             <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
-              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
-              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
+              <Button
+                bsStyle="primary"
+                onClick={() => this.playFriend()}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
             </p>
           </Jumbotron>
           <Game />
@@ -306,11 +310,15 @@ class App extends React.Component {
           <Jumbotron>
             <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
-              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
-              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
+              <Button
+                bsStyle="primary"
+                onClick={() => this.playFriend()}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
             </p>
           </Jumbotron>
-          <Game />
+          <Game twoPlayers={this.state.twoPlayers} />
           <div>
             <Submission
               sendMessage={this.sendMessage}
@@ -323,7 +331,7 @@ class App extends React.Component {
     } else if (this.state.view === 'responses') {
       return (
         <div>
-          <Game />
+          <Game twoPlayers={this.state.twoPlayers} />
           <div>
             <UserResponses
               showSubmissionForm={this.showSubmissionForm}
@@ -339,11 +347,18 @@ class App extends React.Component {
         <Jumbotron>
           <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
           <p>
-            <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
-            <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
+            <Button
+              bsStyle="primary"
+              onClick={() => this.playFriend()}
+            >
+              {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+            </Button>
           </p>
         </Jumbotron>
-        <Game unlockForms={this.unlockForms} />
+        <Game
+          twoPlayers={this.state.twoPlayers}
+          unlockForms={this.unlockForms}
+        />
       </div>
     );
   }
