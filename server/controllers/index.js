@@ -68,7 +68,6 @@ module.exports = {
   submissions: {
     // send a specific user's messages or all messages for an admin
     get: (req, res) => {
-      console.log('GET with query', req.query);
       if (req.query.account_type === 'admin' || req.query.account_type === 'responder') {
         db.Submission.findAll({
           where: {
