@@ -144,12 +144,10 @@ module.exports = {
                   }, (err, reply) => {
                     console.log('SENDMAIL ERR ', err && err.stack);
                     console.dir('SM REPLY ', reply);
-                    res.sendStatus(201);
                   });
-                } else {
-                  res.sendStatus(201);
                 }
               });
+              res.sendStatus(201);
             });
         })
         .catch((err) => {

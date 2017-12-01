@@ -69,7 +69,6 @@ class App extends React.Component {
   }
 
   createUser(username, hash, firstName, lastName) {
-    console.log(` ${username}, ${hash} posted to server`);
     $.ajax({
       method: 'POST',
       url: '/signup',
@@ -84,7 +83,6 @@ class App extends React.Component {
       },
       success: () => {
         alert('You have successfully created an account');
-        console.log('success');
         this.setState({
           view: 'login',
         });
@@ -100,7 +98,6 @@ class App extends React.Component {
   }
 
   logInUser(username, hash) {
-    console.log(`${username}, ${hash} posted to server`);
     $.ajax({
       method: 'POST',
       url: '/login',
@@ -122,7 +119,6 @@ class App extends React.Component {
             this.props.history.push('/');
           }
         });
-        console.log('LOGIN STATE', this.state);
       },
       error: (error) => {
         alert('Incorrect password');
@@ -132,7 +128,6 @@ class App extends React.Component {
   }
 
   sendMessage(contact, urgency, message) {
-    console.log(`${this.state.username}, ${contact}, ${urgency}, ${message} requested post to server as new message`);
     $.ajax({
       method: 'POST',
       url: '/submissions',
@@ -143,7 +138,6 @@ class App extends React.Component {
         user_message: message,
       },
       success: (data) => {
-        console.log(data);
         alert('Your message was sent succesfully. Check back often for status updates.');
       },
       error: (error) => {
@@ -153,12 +147,10 @@ class App extends React.Component {
   }
 
   retrieveResponses(callback) {
-    console.log(`in retrieveResponses with ${this.state.username}`);
     $.ajax({
       method: 'GET',
       url: `/submissions?username=${this.state.username}&account_type=null`,
       success: (data) => {
-        console.log('USER MESSAGES', data);
         callback(data);
       },
       error: (error) => {
@@ -168,7 +160,6 @@ class App extends React.Component {
   }
 
   retrieveOpenMessages(callback) {
-    console.log('in retrieveAllResponses', this.state.username);
     if (window.sessionStorage.getItem('type') !== '') {
       this.setState({
         username: window.sessionStorage.getItem('user'),
@@ -179,7 +170,6 @@ class App extends React.Component {
       method: 'GET',
       url: `/submissions?username=${this.state.username || window.sessionStorage.getItem('user')}&account_type=${this.state.type || window.sessionStorage.getItem('type')}`,
       success: (data) => {
-        console.log('DATA MESSAGES', typeof data[0].createdAt);
         callback(data);
       },
       error: (error) => {
