@@ -36,6 +36,7 @@ class AdminView extends React.Component {
 
     this.setResponseId = this.setResponseId.bind(this);
     this.searchFilter = this.searchFilter.bind(this);
+    this.addEmail = this.addEmail.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,7 @@ class AdminView extends React.Component {
     });
   }
 
+
   //  sets state variable messageId to currently selected message's id
   setResponseId(id) {
     this.setState({
@@ -55,15 +57,44 @@ class AdminView extends React.Component {
     });
   }
 
-  // componentWillReceiveProps() {
-  //   this.props.retrieveOpenMessages( (data) => {
-  //     console.log('ADMIN MESSAGES', data);
-  //     this.setState({
-  //       //may have to change 'data' depending on format
-  //       messages: data
-  //     });
-  //   });
-  // }
+  addEmail() {
+    const email = prompt('Add your email');
+    console.log('email ', email, 'username ', this.props.username);
+    $.ajax({
+      method: 'PATCH',
+      url: '/email',
+      data: {
+        username: this.props.username,
+        email,
+      },
+      success: (data) => {
+        console.log(data);
+        alert('Your response was sent successfully');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  submitAdminResponse(response) {
+    console.log('RESPONSE', response);
+    $.ajax({
+      method: 'PATCH',
+      url: '/submissions',
+      data: {
+        id: this.state.messageId,
+        admin_response: response,
+      },
+      success: (data) => {
+        console.log(data);
+        alert('Your response was sent successfully');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 
   searchFilter(e) {
     console.log('SEARCH ', e.target.value);
@@ -84,7 +115,15 @@ class AdminView extends React.Component {
           bsSize="small"
           bsStyle="primary"
         >
-          Sign In as a Different User
+          Logout
+        </Button>
+        <Button
+          onClick={this.addEmail}
+          className="admin-change-user-button"
+          bsSize="small"
+          bsStyle="primary"
+        >
+          Click for email notifications
         </Button>
         <div className="admin-header group">
           <h3 className="welcome-header">Welcome to Your Inbox!</h3>
@@ -120,6 +159,7 @@ class AdminView extends React.Component {
 AdminView.propTypes = {
   retrieveOpenMessages: PropTypes.func.isRequired,
   showLogIn: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default AdminView;
