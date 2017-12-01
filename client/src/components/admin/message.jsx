@@ -59,7 +59,7 @@ class Message extends React.Component {
   // Render all open user messages in reverse chrono order
   // Nice to have: order by urgency
   render() {
-    console.log('MESSAGE PROPS', this.props);
+    // console.log('MESSAGE PROPS', this.props);
     if (this.state.showResponseForm) {
       return (
         <div className="user-message-container group">

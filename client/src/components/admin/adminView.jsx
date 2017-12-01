@@ -34,7 +34,6 @@ class AdminView extends React.Component {
       search: '',
       // response: '',
     };
-
     this.setResponseId = this.setResponseId.bind(this);
     this.searchFilter = this.searchFilter.bind(this);
     this.addEmail = this.addEmail.bind(this);
