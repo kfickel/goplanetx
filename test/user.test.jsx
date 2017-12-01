@@ -51,12 +51,17 @@ describe('Submission component renders correctly', () => {
     console.log('testing showAdminResponses function');
   };
 
+  const onLogoutUser = () => {
+    console.log('logout user');
+  };
+
   it('should match its empty snapshot', () => {
     const component = shallow((
       <Submission
         retrieveResponses={retrieveResponses}
         showAdminResponses={showAdminResponses}
         sendMessage={sendMessage}
+        onLogoutUser={onLogoutUser}
       />
     ));
     expect(component).toMatchSnapshot();
@@ -73,6 +78,10 @@ describe('UserResponses component renders correctly', () => {
     console.log('testing retrieveResponses function');
   };
 
+  const onLogoutUser = () => {
+    console.log('logout user');
+  };
+
   const username = 'testUser';
 
   it('should match its empty snapshot', () => {
@@ -81,6 +90,7 @@ describe('UserResponses component renders correctly', () => {
         showSubmissionForm={showSubmissionForm}
         retrieveResponses={retrieveResponses}
         username={username}
+        onLogoutUser={onLogoutUser}
       />
     ));
     expect(component).toMatchSnapshot();

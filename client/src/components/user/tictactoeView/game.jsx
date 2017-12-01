@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Input } from 'reactstrap';
 import { Board } from './board';
+import Player from './player';
 
 function calculateWinner(squares) {
   const lines = [
@@ -93,8 +94,8 @@ class Game extends React.Component {
     return (
       <Container>
         <Row>
-          <Col sm={3}>Player 1:
-            <Input type="text" id="player1" placeholder="Player 1 Name" />
+          <Col sm={3}>
+            <Player />
           </Col>
           <Col md={6}>
             <div className="game">
@@ -113,8 +114,12 @@ class Game extends React.Component {
           </Col>
           <Col sm={3}>
             {this.props.twoPlayers ?
-              (<Input type="text" id="player1" placeholder="Player 2 Name" />)
-              : 'Computer' }
+              (<Player />)
+              : (
+                <div className="wins">
+                  <h3 className="player">Computer</h3>
+                  <p>Wins: 0</p>
+                </div>)}
           </Col>
         </Row>
       </Container>

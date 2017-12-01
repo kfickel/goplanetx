@@ -276,7 +276,7 @@ class App extends React.Component {
       return (
         <div>
           <Jumbotron>
-            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
           </Jumbotron>
           <Game />
           <div>
@@ -288,7 +288,7 @@ class App extends React.Component {
       return (
         <div>
           <Jumbotron>
-            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
               <Button
                 bsStyle="primary"
@@ -308,7 +308,7 @@ class App extends React.Component {
       return (
         <div>
           <Jumbotron>
-            <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
               <Button
                 bsStyle="primary"
@@ -345,7 +345,7 @@ class App extends React.Component {
     return (
       <div>
         <Jumbotron>
-          <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
+          <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
           <p>
             <Button
               bsStyle="primary"

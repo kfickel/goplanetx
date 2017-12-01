@@ -7,7 +7,7 @@ import { Board, HotSquare } from '../client/src/components/user/tictactoeView/bo
 
 describe('Component: Game', () => {
   it('should match its empty snapshot', () => {
-    const component = shallow(<Game unlockForms={() => {}} />);
+    const component = shallow(<Game unlockForms={() => {}} twoPlayers />);
     expect(component).toMatchSnapshot();
   });
 });

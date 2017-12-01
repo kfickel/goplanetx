@@ -50,6 +50,13 @@ ol, ul {
   margin: auto;
 }
 
+.player {
+  text-align: center;
+  color: #4B586E;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 36px;
+}
+
 /*====MAIN STYLES====*/
 * {
   font-family: 'Merriweather Sans', sans-serif;
