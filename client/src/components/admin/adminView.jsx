@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 import Button from 'react-bootstrap/lib/Button';
 import Message from './message';
 
