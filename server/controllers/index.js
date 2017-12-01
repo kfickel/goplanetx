@@ -138,16 +138,20 @@ module.exports = {
             })
               .then((users) => {
                 users.forEach((user) => {
-                  sendmail({
-                    from: 'no-reply@sesame.com',
-                    to: user.dataValues.email,
-                    subject: 'A new submission was made',
-                    html: 'Go to this url to check the submission 127.0.1.0:300/admin',
-                  }, (err, reply) => {
-                    console.log('SENDMAIL ERR ', err && err.stack);
-                    console.dir('SM REPLY ', reply);
-                  });
-                  res.sendStatus(201);
+                  if (user.dataValues.email !== null || users.dataValues.email !== '') {
+                    sendmail({
+                      from: 'no-reply@sesame.com',
+                      to: user.dataValues.email,
+                      subject: 'A new submission was made',
+                      html: 'Go to this url to check the submission 127.0.1.0:300/admin',
+                    }, (err, reply) => {
+                      console.log('SENDMAIL ERR ', err && err.stack);
+                      console.dir('SM REPLY ', reply);
+                    });
+                    res.sendStatus(201);
+                  } else {
+                    res.sendStatus(201);
+                  }
                 });
               });
           })
