@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
 import Game from './components/user/tictactoeView/game';
 import Login from './components/user/formView/login';
@@ -11,6 +11,7 @@ import AdminView from './components/admin/adminView';
 import UserResponses from './components/user/formView/userResponses';
 import AdminLogin from './components/user/formView/adminLogin';
 import Users from './components/admin/users';
+import AdminNavigation from './components/admin/adminNavigation';
 
 class App extends React.Component {
   constructor(props) {
@@ -322,19 +323,25 @@ class App extends React.Component {
         />
         <Route
           path="/admin/messages"
-          render={() => (
-            <AdminView
-              showLogIn={this.showLogIn}
-              retrieveOpenMessages={this.retrieveOpenMessages}
-              username={this.state.username}
-            />
-          )}
+          render={() => (this.state.username === '' ? <Redirect to="/admin" /> : (
+            <div>
+              <AdminNavigation />
+              <AdminView
+                showLogIn={this.showLogIn}
+                retrieveOpenMessages={this.retrieveOpenMessages}
+                username={this.state.username}
+              />
+            </div>
+          ))}
         />
         <Route
           path="/admin/users"
-          render={() => (
-            <Users />
-          )}
+          render={() => (this.state.username === '' ? <Redirect to="/admin" /> : (
+            <div>
+              <AdminNavigation />
+              <Users />
+            </div>
+          ))}
         />
       </Switch>
     );

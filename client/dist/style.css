@@ -326,4 +326,9 @@ ol, ul {
   float: right;
 }
 
+/*====ADMIN NAVBAR SETTINGS====*/
 
+.nav-tab {
+  border: 1px solid gray;
+  padding: 10px;
+}
