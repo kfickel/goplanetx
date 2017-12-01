@@ -19,7 +19,6 @@ class App extends React.Component {
     this.state = {
       username: '',
       type: '',
-      session: '',
       // showForms: false,
       // Possible view values:
       // restricted: only render game
@@ -112,10 +111,11 @@ class App extends React.Component {
           view: 'submission',
           username: data.username,
           type: data.account_type,
-          session: window.sessionStorage.setItem('type', this.state.type),
         }, () => {
           if (this.state.type === 'admin' || this.state.type === 'responder') {
             this.props.history.push('/admin/messages');
+            window.sessionStorage.setItem('type', this.state.type);
+            window.sessionStorage.setItem('user', this.state.username);
           } else if (this.state.type === 'user') {
             this.props.history.push('/');
           }
@@ -167,9 +167,15 @@ class App extends React.Component {
 
   retrieveOpenMessages(callback) {
     console.log('in retrieveAllResponses', this.state.username);
+    if (window.sessionStorage.getItem('type') !== '') {
+      this.setState({
+        username: window.sessionStorage.getItem('user'),
+        type: window.sessionStorage.getItem('type'),
+      });
+    }
     $.ajax({
       method: 'GET',
-      url: `/submissions?username=${this.state.username}&account_type=${this.state.type}`,
+      url: `/submissions?username=${this.state.username || window.sessionStorage.getItem('user')}&account_type=${this.state.type || window.sessionStorage.getItem('type')}`,
       success: (data) => {
         console.log('DATA MESSAGES', typeof data[0].createdAt);
         callback(data);
@@ -187,13 +193,14 @@ class App extends React.Component {
   }
 
   showLogIn() {
+    window.sessionStorage.setItem('type', '');
+    window.sessionStorage.setItem('user', '');
     if (this.state.type !== 'admin') {
       this.setState({
         view: 'login',
         showBugButton: false,
       });
     } else {
-      console.log('\n HERE \n');
       this.setState({
         view: 'login',
         showBugButton: false,
@@ -321,13 +328,13 @@ class App extends React.Component {
         <Route
           exact
           path="/admin"
-          render={() => (
+          render={() => (window.sessionStorage.getItem('type') === 'admin' || window.sessionStorage.getItem('type') === 'responder' ? <Redirect to="/admin/messages" /> : (
             <AdminLogin showSignUp={this.showSignUp} logInUser={this.logInUser} />
-          )}
+          ))}
         />
         <Route
           path="/admin/messages"
-          render={() => (this.state.username === '' ? <Redirect to="/admin" /> : (
+          render={() => (window.sessionStorage.getItem('type') === '' ? <Redirect to="/admin" /> : (
             <div>
               {this.state.type === 'admin' ? <AdminNavigation /> : null}
               <AdminView
@@ -340,7 +347,7 @@ class App extends React.Component {
         />
         <Route
           path="/admin/users"
-          render={() => (this.state.type === '' ? <Redirect to="/admin" /> : (
+          render={() => (window.sessionStorage.getItem('type') === '' ? <Redirect to="/admin" /> : (
             <div>
               <AdminNavigation />
               <Users />

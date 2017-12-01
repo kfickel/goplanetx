@@ -11,7 +11,6 @@ class AdminLogin extends React.Component {
     this.state = {
       username: '',
       password: '',
-      session: this.props.session,
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onUsernameChange = this.onUsernameChange.bind(this);
