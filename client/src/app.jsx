@@ -64,7 +64,6 @@ class App extends React.Component {
     }
   }
 
-  // MAKE SURE THIS INTERACTS CORRECTLY WITH SERVER/DB
   onLogoutUser() {
     this.setState({ view: 'restricted' });
   }
@@ -370,7 +369,8 @@ class App extends React.Component {
         <Route
           exact
           path="/admin"
-          render={() => (window.sessionStorage.getItem('type') === 'admin' || window.sessionStorage.getItem('type') === 'responder' ? <Redirect to="/admin/messages" /> : (
+          render={()
+           => (window.sessionStorage.getItem('type') === 'admin' || window.sessionStorage.getItem('type') === 'responder' ? <Redirect to="/admin/messages" /> : (
             <AdminLogin showSignUp={this.showSignUp} logInUser={this.logInUser} />
           ))}
         />
