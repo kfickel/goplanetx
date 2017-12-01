@@ -132,7 +132,6 @@ module.exports = {
             })
           ))
           .then((createdMessage) => {
-            console.log('Successful user message creation with', createdMessage);
             db.User.findAll({
               attributes: ['email'],
             })
