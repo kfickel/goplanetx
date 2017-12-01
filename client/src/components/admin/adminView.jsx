@@ -159,7 +159,11 @@ class AdminView extends React.Component {
 AdminView.propTypes = {
   retrieveOpenMessages: PropTypes.func.isRequired,
   showLogIn: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
+};
+
+AdminView.defaultProps = {
+  username: '',
 };
 
 export default AdminView;

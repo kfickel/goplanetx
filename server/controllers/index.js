@@ -4,6 +4,7 @@
 
 const db = require('../db/index.js');
 const bcrypt = require('bcrypt');
+const sendmail = require('sendmail')();
 
 module.exports = {
   signup: {
@@ -130,9 +131,28 @@ module.exports = {
               last_name: user.get('last_name'),
             })
           ))
-          .then((createdMessage) => {
-            console.log('Successful user message creation with', createdMessage);
-            res.sendStatus(201);
+          .then(() => {
+            db.User.findAll({
+              attributes: ['email'],
+            })
+              .then((users) => {
+                users.forEach((user) => {
+                  if (user.dataValues.email !== null || users.dataValues.email !== '') {
+                    sendmail({
+                      from: 'no-reply@sesame.com',
+                      to: user.dataValues.email,
+                      subject: 'A new submission was made',
+                      html: 'Go to this url to check the submission 127.0.1.0:300/admin',
+                    }, (err, reply) => {
+                      console.log('SENDMAIL ERR ', err && err.stack);
+                      console.dir('SM REPLY ', reply);
+                    });
+                    res.sendStatus(201);
+                  } else {
+                    res.sendStatus(201);
+                  }
+                });
+              });
           })
           .catch((err) => {
             console.log('Error creating user message with', err);
