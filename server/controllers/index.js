@@ -68,7 +68,6 @@ module.exports = {
   submissions: {
     // send a specific user's messages or all messages for an admin
     get: (req, res) => {
-      console.log('GET with query', req.query);
       if (req.query.account_type === 'admin' || req.query.account_type === 'responder') {
         db.Submission.findAll({
           where: {
@@ -113,56 +112,50 @@ module.exports = {
     },
     // write a message to the db associated with a particular user
     post: (req, res) => {
-      if (req.body.account_type === 'user') {
-        // find user by username
-        db.User.findOne({
-          where: {
-            username: req.body.username,
-          },
-        })
-          .then(user => (
-            // create a submission record tied to that particular user
-            db.Submission.create({
-              userId: user.get('id'),
-              user_message: req.body.user_message,
-              user_contact: req.body.user_contact,
-              user_urgency: req.body.user_urgency,
-              first_name: user.get('first_name'),
-              last_name: user.get('last_name'),
-            })
-          ))
-          .then(() => {
-            db.User.findAll({
-              attributes: ['email'],
-            })
-              .then((users) => {
-                users.forEach((user) => {
-                  if (user.dataValues.email !== null || users.dataValues.email !== '') {
-                    sendmail({
-                      from: 'no-reply@sesame.com',
-                      to: user.dataValues.email,
-                      subject: 'A new submission was made',
-                      html: 'Go to this url to check the submission 127.0.1.0:300/admin',
-                    }, (err, reply) => {
-                      console.log('SENDMAIL ERR ', err && err.stack);
-                      console.dir('SM REPLY ', reply);
-                    });
-                    res.sendStatus(201);
-                  } else {
-                    res.sendStatus(201);
-                  }
-                });
-              });
+      // find user by username
+      db.User.findOne({
+        where: {
+          username: req.body.username,
+        },
+      })
+        .then(user => (
+          // create a submission record tied to that particular user
+          db.Submission.create({
+            userId: user.get('id'),
+            user_message: req.body.user_message,
+            user_contact: req.body.user_contact,
+            user_urgency: req.body.user_urgency,
+            first_name: user.get('first_name'),
+            last_name: user.get('last_name'),
           })
-          .catch((err) => {
-            console.log('Error creating user message with', err);
-            res.sendStatus(400);
-          });
-      } else {
-        // disallow non-users from sending messages
-        console.log('Admins cannot create messages, only amend existing ones');
-        res.sendStatus(400);
-      }
+        ))
+        .then(() => {
+          db.User.findAll({
+            attributes: ['email'],
+          })
+            .then((users) => {
+              users.forEach((user) => {
+                if (user.dataValues.email !== null || user.dataValues.email !== '') {
+                  sendmail({
+                    from: 'no-reply@sesame.com',
+                    to: user.dataValues.email,
+                    subject: 'A new submission was made',
+                    html: 'Go to this url to check the submission https://sesa-me.herokuapp.com/admin',
+                  }, (err, reply) => {
+                    console.log('SENDMAIL ERR ', err && err.stack);
+                    console.dir('SM REPLY ', reply);
+                    res.sendStatus(201);
+                  });
+                } else {
+                  res.sendStatus(201);
+                }
+              });
+            });
+        })
+        .catch((err) => {
+          console.log('Error creating user message with', err);
+          res.sendStatus(400);
+        });
     },
     // allows an admin to edit most recent submission associated with a user
     patch: (req, res) => {
