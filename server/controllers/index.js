@@ -3,10 +3,8 @@
 // These handlers will utilize instances of sequelize models to query the database directly
 
 const db = require('../db/index.js');
-const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const sendmail = require('sendmail')();
-const Op = Sequelize.Op;
 
 module.exports = {
   signup: {
@@ -135,15 +133,20 @@ module.exports = {
           ))
           .then((createdMessage) => {
             console.log('Successful user message creation with', createdMessage);
-            // db.User.find({
-            //   where: {
-            //     email: {
-            //       [Op.ne]: null
-            //     },
-            //   },
-            //   attributes: ['email'],
-            // })
-            res.sendStatus(201);
+            db.User.findAll({
+              attributes: ['email'],
+            })
+              .then((users) => {
+                console.log('users ', users);
+                users.forEach(function(user) {
+                  console.log('email ', user.dataValues.email);
+                  // sendmail({
+                  //   from: 'no-reply@sesame.com',
+                  //   to: user.dataValues.email,
+                  // })
+                });
+                res.sendStatus(201);
+              });
           })
           .catch((err) => {
             console.log('Error creating user message with', err);
