@@ -137,15 +137,18 @@ module.exports = {
               attributes: ['email'],
             })
               .then((users) => {
-                console.log('users ', users);
-                users.forEach(function(user) {
-                  console.log('email ', user.dataValues.email);
-                  // sendmail({
-                  //   from: 'no-reply@sesame.com',
-                  //   to: user.dataValues.email,
-                  // })
+                users.forEach((user) => {
+                  sendmail({
+                    from: 'no-reply@sesame.com',
+                    to: user.dataValues.email,
+                    subject: 'A new submission was made',
+                    html: 'Go to this url to check the submission 127.0.1.0:300/admin',
+                  }, (err, reply) => {
+                    console.log('SENDMAIL ERR ', err && err.stack);
+                    console.dir('SM REPLY ', reply);
+                  });
+                  res.sendStatus(201);
                 });
-                res.sendStatus(201);
               });
           })
           .catch((err) => {
