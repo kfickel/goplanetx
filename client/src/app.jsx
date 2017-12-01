@@ -66,8 +66,8 @@ class App extends React.Component {
     this.setState({ view: 'restricted' });
   }
 
-  createUser(username, hash, admin, firstName, lastName) {
-    console.log(` ${username}, ${hash}, ${admin} posted to server`);
+  createUser(username, hash, firstName, lastName) {
+    console.log(` ${username}, ${hash} posted to server`);
     $.ajax({
       method: 'POST',
       url: '/signup',
@@ -75,7 +75,7 @@ class App extends React.Component {
         username,
         hash,
         salt: '',
-        account_type: admin,
+        account_type: 'user',
         first_name: firstName,
         last_name: lastName,
         email: '',
@@ -112,7 +112,7 @@ class App extends React.Component {
           username: data.username,
           type: data.account_type,
         }, () => {
-          if (this.state.type === 'admin') {
+          if (this.state.type === 'admin' || this.state.type === 'responder') {
             this.props.history.push('/admin/messages');
           }
         });
@@ -325,7 +325,7 @@ class App extends React.Component {
           path="/admin/messages"
           render={() => (this.state.username === '' ? <Redirect to="/admin" /> : (
             <div>
-              <AdminNavigation />
+              {this.state.type === 'admin' ? <AdminNavigation /> : null}
               <AdminView
                 showLogIn={this.showLogIn}
                 retrieveOpenMessages={this.retrieveOpenMessages}
@@ -336,7 +336,7 @@ class App extends React.Component {
         />
         <Route
           path="/admin/users"
-          render={() => (this.state.username === '' ? <Redirect to="/admin" /> : (
+          render={() => (this.state.type === '' ? <Redirect to="/admin" /> : (
             <div>
               <AdminNavigation />
               <Users />
