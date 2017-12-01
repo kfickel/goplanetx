@@ -30,6 +30,7 @@ class App extends React.Component {
       // submissions: render sumbissions component (if user is successfully logged in)
       view: 'restricted',
       showBugButton: false,
+      twoPlayers: true,
     };
 
     this.unlockForms = this.unlockForms.bind(this);
@@ -46,6 +47,7 @@ class App extends React.Component {
     this.retrieveResponses = this.retrieveResponses.bind(this);
     this.conditionalRender = this.conditionalRender.bind(this);
     this.onLogoutUser = this.onLogoutUser.bind(this);
+    this.playFriend = this.playFriend.bind(this);
   }
 
   componentDidMount() {
@@ -239,6 +241,10 @@ class App extends React.Component {
     this.setState({ showBugButton: true });
   }
 
+  playFriend() {
+    this.setState({ twoPlayers: !this.state.twoPlayers });
+  }
+
   conditionalRender() {
     if (this.state.showBugButton === true) {
       return (
@@ -284,8 +290,8 @@ class App extends React.Component {
           <Jumbotron>
             <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
-              <Button bsStyle="primary">Play a Friend</Button>
-              <Button bsStyle="primary">Play the Computer</Button>
+              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
+              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
             </p>
           </Jumbotron>
           <Game />
@@ -300,8 +306,8 @@ class App extends React.Component {
           <Jumbotron>
             <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
             <p>
-              <Button bsStyle="primary">Play a Friend</Button>
-              <Button bsStyle="primary">Play the Computer</Button>
+              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
+              <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
             </p>
           </Jumbotron>
           <Game />
@@ -333,8 +339,8 @@ class App extends React.Component {
         <Jumbotron>
           <h1 bsClass="jumbotron" className="main-title">Tic Tac Toe</h1>
           <p>
-            <Button bsStyle="primary">Play a Friend</Button>
-            <Button bsStyle="primary">Play the Computer</Button>
+            <Button bsStyle="primary" onClick={() => this.playFriend()}>Play a Friend</Button>
+            <Button bsStyle="primary" onClick={() => this.playFriend()}>Play the Computer</Button>
           </p>
         </Jumbotron>
         <Game unlockForms={this.unlockForms} />

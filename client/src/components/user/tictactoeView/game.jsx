@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Input } from 'reactstrap';
 import { Board } from './board';
 
 function calculateWinner(squares) {
@@ -93,26 +93,27 @@ class Game extends React.Component {
     return (
       <Container>
         <Row>
-        <Col>
-        </Col>
-        <Col>
-        <div className="game">
-          <div className="game-board">
-            <div className="game-info">
-              <div>{status}</div>
+          <Col sm={3}>Player 1:
+            <Input type="text" id="player1" placeholder="Player 1 Name" />
+          </Col>
+          <Col md={6}>
+            <div className="game">
+              <div className="game-board">
+                <div className="game-info">
+                  <div>{status}</div>
+                </div>
+                <Board
+                  squares={current.squares}
+                  onClick={i => this.handleClick(i)}
+                  unlockForms={this.props.unlockForms}
+                />
+                <span><button onClick={this.onReset}>reset</button></span>
+              </div>
             </div>
-
-            <Board
-              squares={current.squares}
-              onClick={i => this.handleClick(i)}
-              unlockForms={this.props.unlockForms}
-            />
-            <span><button onClick={this.onReset}>reset</button></span>
-          </div>
-        </div>
-        </Col>
-        <Col>
-        </Col>
+          </Col>
+          <Col sm={3}>Player 2:
+            <Input type="text" id="player1" placeholder="Player 2 Name" />
+          </Col>
         </Row>
       </Container>
     );
