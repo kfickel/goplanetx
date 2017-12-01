@@ -14,6 +14,7 @@ module.exports = {
   },
 
   "rules": {
+    "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/anchor-is-valid": [ "error", {
         "components": [ "Link" ],
         "specialLink": [ "to", "hrefLeft", "hrefRight" ],

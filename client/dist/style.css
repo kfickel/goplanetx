@@ -145,12 +145,18 @@ ol, ul {
   text-align: center;
 }
 
+.dropdown {
+  float: left;
+  padding-left: 40px;
+}
+
 .admin-msg-search {
   text-align: center;
 }
 
 #adminMessageSearch {
   margin: auto 0;
+  margin-right: 130px;
   width: 450px;
   padding: 5px;
 }
