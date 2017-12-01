@@ -68,7 +68,7 @@ module.exports = {
     // send a specific user's messages or all messages for an admin
     get: (req, res) => {
       console.log('GET with query', req.query);
-      if (req.query.account_type === 'admin') {
+      if (req.query.account_type === 'admin' || req.query.account_type === 'responder') {
         db.Submission.findAll({
           where: {
             admin_complete: null,
@@ -112,7 +112,7 @@ module.exports = {
     },
     // write a message to the db associated with a particular user
     post: (req, res) => {
-      if (req.body.account_type !== 'admin') {
+      if (req.body.account_type === 'user') {
         // find user by username
         db.User.findOne({
           where: {

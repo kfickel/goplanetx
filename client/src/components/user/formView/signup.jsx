@@ -13,7 +13,6 @@ class Signup extends React.Component {
       username: '',
       password: '',
       checkPassword: '',
-      admin: '',
       firstName: '',
       lastName: '',
     };
@@ -55,12 +54,6 @@ class Signup extends React.Component {
     });
   }
 
-  onAdminCheck() {
-    this.setState({
-      admin: 'admin',
-    });
-  }
-
   onSubmit() {
     if (this.state.username === '') {
       alert('Oops! Username cannot be empty. Let\'s try that again.');
@@ -79,15 +72,12 @@ class Signup extends React.Component {
     this.props.createUser(
       this.state.username,
       this.state.password,
-      this.state.admin,
       this.state.firstName,
       this.state.lastName,
     );
   }
 
 
-  // On deployment: remove option to sign up as an admin.
-  // This will be done directly within the database.
   render() {
     return (
       <div className="container signup-container">
@@ -143,8 +133,3 @@ Signup.propTypes = {
 };
 
 export default Signup;
-
-// check box removed from line 103...
-// (<Checkbox className="admin-checkbox" onChange={this.onAdminCheck.bind(this)}>
-// Administrator</Checkbox>
-//         <br />)
