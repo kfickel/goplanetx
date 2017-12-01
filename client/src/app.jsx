@@ -291,7 +291,7 @@ class App extends React.Component {
             <p>
               <Button
                 bsStyle="primary"
-                onClick={() => this.playFriend()}
+                onClick={this.playFriend}
               >
                 {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
               </Button>
@@ -311,7 +311,7 @@ class App extends React.Component {
             <p>
               <Button
                 bsStyle="primary"
-                onClick={() => this.playFriend()}
+                onClick={this.playFriend}
               >
                 {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
               </Button>
@@ -348,7 +348,7 @@ class App extends React.Component {
           <p>
             <Button
               bsStyle="primary"
-              onClick={() => this.playFriend()}
+              onClick={this.playFriend}
             >
               {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
             </Button>
@@ -369,8 +369,7 @@ class App extends React.Component {
         <Route
           exact
           path="/admin"
-          render={()
-           => (window.sessionStorage.getItem('type') === 'admin' || window.sessionStorage.getItem('type') === 'responder' ? <Redirect to="/admin/messages" /> : (
+          render={() => (window.sessionStorage.getItem('type') === 'admin' || window.sessionStorage.getItem('type') === 'responder' ? <Redirect to="/admin/messages" /> : (
             <AdminLogin showSignUp={this.showSignUp} logInUser={this.logInUser} />
           ))}
         />
