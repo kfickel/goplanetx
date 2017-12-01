@@ -54,45 +54,97 @@ exports[`Component: Board should match its empty snapshot 1`] = `
 `;
 
 exports[`Component: Game should match its empty snapshot 1`] = `
-<div
-  className="game"
+<Container
+  tag="div"
 >
-  <div
-    className="game-board"
+  <Row
+    tag="div"
   >
-    <div
-      className="game-info"
-    >
-      <div>
-        Next player: X
-      </div>
-    </div>
-    <Board
-      onClick={[Function]}
-      squares={
+    <Col
+      sm={3}
+      tag="div"
+      widths={
         Array [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
         ]
       }
-      unlockForms={[Function]}
-    />
-    <span>
-      <button
-        onClick={[Function]}
+    >
+      <Player />
+    </Col>
+    <Col
+      md={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <div
+        className="game"
       >
-        reset
-      </button>
-    </span>
-  </div>
-</div>
+        <div
+          className="game-board"
+        >
+          <div
+            className="game-info"
+          >
+            <div>
+              Next player: X
+            </div>
+          </div>
+          <Board
+            onClick={[Function]}
+            squares={
+              Array [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+              ]
+            }
+            unlockForms={[Function]}
+          />
+          <span>
+            <button
+              onClick={[Function]}
+            >
+              reset
+            </button>
+          </span>
+        </div>
+      </div>
+    </Col>
+    <Col
+      sm={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Player />
+    </Col>
+  </Row>
+</Container>
 `;
 
 exports[`Component: Hot Button should match its empty snapshot 1`] = `

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Col, Input } from 'reactstrap';
 import { Board } from './board';
+import Player from './player';
 
 function calculateWinner(squares) {
   const lines = [
@@ -90,28 +92,44 @@ class Game extends React.Component {
     }
 
     return (
-      <div className="game">
-        <div className="game-board">
-          <div className="game-info">
-            <div>{status}</div>
-          </div>
-
-          <Board
-            squares={current.squares}
-            onClick={i => this.handleClick(i)}
-            unlockForms={this.props.unlockForms}
-          />
-          <span><button onClick={this.onReset}>reset</button></span>
-        </div>
-
-
-      </div>
+      <Container>
+        <Row>
+          <Col sm={3}>
+            <Player />
+          </Col>
+          <Col md={6}>
+            <div className="game">
+              <div className="game-board">
+                <div className="game-info">
+                  <div>{status}</div>
+                </div>
+                <Board
+                  squares={current.squares}
+                  onClick={i => this.handleClick(i)}
+                  unlockForms={this.props.unlockForms}
+                />
+                <span><button onClick={this.onReset}>reset</button></span>
+              </div>
+            </div>
+          </Col>
+          <Col sm={3}>
+            {this.props.twoPlayers ?
+              (<Player />)
+              : (
+                <div className="wins">
+                  <h3 className="player">Computer</h3>
+                  <p>Wins: 0</p>
+                </div>)}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
 
 Game.propTypes = {
   unlockForms: PropTypes.func,
+  twoPlayers: PropTypes.bool.isRequired,
 };
 
 Game.defaultProps = {

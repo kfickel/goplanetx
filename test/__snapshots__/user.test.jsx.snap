@@ -376,6 +376,7 @@ exports[`Submission component renders correctly should match its empty snapshot 
       bsStyle="primary"
       className="logout"
       disabled={false}
+      onClick={[Function]}
     >
       Logout
     </Button>

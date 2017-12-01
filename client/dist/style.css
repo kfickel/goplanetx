@@ -1,7 +1,8 @@
 body {
   background: linear-gradient(45deg, #EAFFF0, #DFE7FF);
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  margin: 0px;
+  padding: 0px;
 }
 
 ol, ul {
@@ -49,6 +50,13 @@ ol, ul {
   margin: auto;
 }
 
+.player {
+  text-align: center;
+  color: #4B586E;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 36px;
+}
+
 /*====MAIN STYLES====*/
 * {
   font-family: 'Merriweather Sans', sans-serif;
@@ -64,6 +72,9 @@ ol, ul {
   text-align: center;
   color: #4B586E;
   font-size: 70px;
+  font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .user-message-main,
@@ -127,6 +138,12 @@ ol, ul {
 
 .bug-button {
   margin: 0 1%;
+}
+
+.jumbotron {
+  background-color: #4B586E;
+  padding-bottom: 3px;
+  margin-bottom: 20px;
 }
 
 .logout {

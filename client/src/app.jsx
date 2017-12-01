@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import $ from 'jquery';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
+import { Jumbotron } from 'reactstrap';
 import Game from './components/user/tictactoeView/game';
 import Login from './components/user/formView/login';
 import Signup from './components/user/formView/signup';
@@ -29,6 +30,7 @@ class App extends React.Component {
       // submissions: render sumbissions component (if user is successfully logged in)
       view: 'restricted',
       showBugButton: false,
+      twoPlayers: true,
     };
 
     this.unlockForms = this.unlockForms.bind(this);
@@ -45,6 +47,7 @@ class App extends React.Component {
     this.retrieveResponses = this.retrieveResponses.bind(this);
     this.conditionalRender = this.conditionalRender.bind(this);
     this.onLogoutUser = this.onLogoutUser.bind(this);
+    this.playFriend = this.playFriend.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +64,6 @@ class App extends React.Component {
     }
   }
 
-  // MAKE SURE THIS INTERACTS CORRECTLY WITH SERVER/DB
   onLogoutUser() {
     this.setState({ view: 'restricted' });
   }
@@ -238,6 +240,10 @@ class App extends React.Component {
     this.setState({ showBugButton: true });
   }
 
+  playFriend() {
+    this.setState({ twoPlayers: !this.state.twoPlayers });
+  }
+
   conditionalRender() {
     if (this.state.showBugButton === true) {
       return (
@@ -268,7 +274,9 @@ class App extends React.Component {
     } else if (this.state.view === 'login') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+          </Jumbotron>
           <Game />
           <div>
             <Login logInUser={this.logInUser} showSignUp={this.showSignUp} />
@@ -278,7 +286,17 @@ class App extends React.Component {
     } else if (this.state.view === 'signup') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button
+                bsStyle="primary"
+                onClick={this.playFriend}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
+            </p>
+          </Jumbotron>
           <Game />
           <div>
             <Signup createUser={this.createUser} showLogIn={this.showLogIn} />
@@ -288,8 +306,18 @@ class App extends React.Component {
     } else if (this.state.view === 'submission') {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
-          <Game />
+          <Jumbotron>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button
+                bsStyle="primary"
+                onClick={this.playFriend}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
+            </p>
+          </Jumbotron>
+          <Game twoPlayers={this.state.twoPlayers} />
           <div>
             <Submission
               sendMessage={this.sendMessage}
@@ -302,7 +330,7 @@ class App extends React.Component {
     } else if (this.state.view === 'responses') {
       return (
         <div>
-          <Game />
+          <Game twoPlayers={this.state.twoPlayers} />
           <div>
             <UserResponses
               showSubmissionForm={this.showSubmissionForm}
@@ -315,8 +343,21 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h1 className="main-title">Tic Tac Toe</h1>
-        <Game unlockForms={this.unlockForms} />
+        <Jumbotron>
+          <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+          <p>
+            <Button
+              bsStyle="primary"
+              onClick={this.playFriend}
+            >
+              {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+            </Button>
+          </p>
+        </Jumbotron>
+        <Game
+          twoPlayers={this.state.twoPlayers}
+          unlockForms={this.unlockForms}
+        />
       </div>
     );
   }
