@@ -43,13 +43,16 @@ class AdminView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.retrieveOpenMessages((data) => {
-      console.log('ADMIN MESSAGES', data);
-      this.setState({
-        // may have to change 'data' depending on format
-        messages: data,
+    const retrieve = () => {
+      this.props.retrieveOpenMessages((data) => {
+        this.setState({
+          // may have to change 'data' depending on format
+          messages: data,
+        });
       });
-    });
+    };
+    retrieve();
+    setInterval(() => retrieve(), 3000);
   }
 
 
@@ -69,8 +72,7 @@ class AdminView extends React.Component {
         username: this.props.username,
         email,
       },
-      success: (data) => {
-        console.log(data);
+      success: () => {
         alert('Your response was sent successfully');
       },
       error: (error) => {
@@ -96,7 +98,6 @@ class AdminView extends React.Component {
   }
 
   submitAdminResponse(response) {
-    console.log('RESPONSE', response);
     $.ajax({
       method: 'PATCH',
       url: '/submissions',
@@ -104,8 +105,7 @@ class AdminView extends React.Component {
         id: this.state.messageId,
         admin_response: response,
       },
-      success: (data) => {
-        console.log(data);
+      success: () => {
         alert('Your response was sent successfully');
       },
       error: (error) => {
@@ -115,7 +115,6 @@ class AdminView extends React.Component {
   }
 
   searchFilter(e) {
-    console.log('SEARCH ', e.target.value);
     this.setState({
       search: e.target.value,
     });

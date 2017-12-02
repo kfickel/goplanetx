@@ -23,7 +23,6 @@ class Response extends React.Component {
   }
 
   submitAdminResponse(id, response) {
-    console.log('RESPONSE', response);
     $.ajax({
       method: 'PATCH',
       url: '/submissions',
@@ -31,8 +30,7 @@ class Response extends React.Component {
         id,
         admin_response: response,
       },
-      success: (data) => {
-        console.log(data);
+      success: () => {
         alert('Your response was sent successfully');
       },
       error: (error) => {
@@ -44,13 +42,10 @@ class Response extends React.Component {
   // when admin submits a response,
   // calls the submitAdminResponse method to send id and response to server as a patch request
   sendResponse() {
-  // console.log(`RESPONSE VARS:  ${this.props.messageId},
-  // ${this.state.response}, ${this.props.messageName}`);
     this.submitAdminResponse(this.props.messageId, this.state.response);
   }
 
   render() {
-    // console.log('RESPONSE PROPS', this.props);
     return (
       <FormGroup>
         <div>Respond to {this.props.messageName}&apos;s message:</div>

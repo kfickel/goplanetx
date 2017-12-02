@@ -46,8 +46,7 @@ class Message extends React.Component {
         id,
         admin_complete: true,
       },
-      success: (data) => {
-        console.log(data);
+      success: () => {
         alert('This messages has been marked as complete. It will no longer appear in your inbox.');
       },
       error: (error) => {
@@ -59,7 +58,6 @@ class Message extends React.Component {
   // Render all open user messages in reverse chrono order
   // Nice to have: order by urgency
   render() {
-    // console.log('MESSAGE PROPS', this.props);
     if (this.state.showResponseForm) {
       return (
         <div className="user-message-container group">

@@ -14,13 +14,15 @@ class UserResponses extends React.Component {
   }
 
   componentDidMount() {
-    console.log('USER PROPS', this.props);
-    this.props.retrieveResponses((data) => {
-      console.log('USER MESSAGES ON SUB COMPONENT', data);
-      this.setState({
-        responses: data,
+    const retrieve = () => {
+      this.props.retrieveResponses((data) => {
+        this.setState({
+          responses: data,
+        });
       });
-    });
+    };
+    retrieve();
+    setInterval(() => retrieve(), 3000);
   }
 
   render() {
