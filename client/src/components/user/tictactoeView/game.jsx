@@ -93,11 +93,6 @@ class Game extends React.Component {
     });
   }
 
-  handleHover() {
-    console.log('hover!');
-    return (<div> HOVER </div>);
-  }
-
   jumpTo(step) {
     this.setState({
       stepNumber: step,

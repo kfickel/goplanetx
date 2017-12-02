@@ -240,7 +240,17 @@ class App extends React.Component {
     if (this.state.showBugButton === true) {
       return (
         <div>
-          <h1 className="main-title">Tic Tac Toe</h1>
+          <Jumbotron>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button
+                bsStyle="primary"
+                onClick={this.playFriend}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
+            </p>
+          </Jumbotron>
           <Game />
           <div className="report-bug-message">
             <p>It looks like you&apos;ve found a bug.  Would you like to report it?</p>
@@ -322,6 +332,17 @@ class App extends React.Component {
     } else if (this.state.view === 'responses') {
       return (
         <div>
+          <Jumbotron>
+            <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
+            <p>
+              <Button
+                bsStyle="primary"
+                onClick={this.playFriend}
+              >
+                {this.state.twoPlayers ? 'Play Computer' : 'Play a Friend'}
+              </Button>
+            </p>
+          </Jumbotron>
           <Game twoPlayers={this.state.twoPlayers} />
           <div>
             <UserResponses
