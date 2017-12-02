@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Input } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { Board } from './board';
 import Player from './player';
+import Computer from './computer';
 
 function calculateWinner(squares) {
   const lines = [
@@ -35,9 +36,13 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      player1wins: 0,
+      player2wins: 0,
+      gameInPlay: true,
     };
 
     this.onReset = this.onReset.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   onReset() {
@@ -49,6 +54,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      gameInPlay: true,
     });
   }
 
@@ -56,9 +62,11 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+
+    if (!this.state.gameInPlay || squares[i]) {
       return;
     }
+
     squares[i] = this.state.xIsNext ? '╳' : '◯';
     this.setState({
       history: history.concat([
@@ -68,6 +76,19 @@ class Game extends React.Component {
       ]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
+    }, () => {
+      const winner = calculateWinner(squares);
+      if (winner === '╳') {
+        this.setState({
+          player1wins: this.state.player1wins + 1,
+          gameInPlay: false,
+        });
+      } else if (winner === '◯') {
+        this.setState({
+          player2wins: this.state.player2wins + 1,
+          gameInPlay: false,
+        });
+      }
     });
   }
 
@@ -77,7 +98,6 @@ class Game extends React.Component {
       xIsNext: (step % 2) === 0,
     });
   }
-
 
   render() {
     const { history } = this.state;
@@ -95,7 +115,7 @@ class Game extends React.Component {
       <Container>
         <Row>
           <Col sm={3}>
-            <Player />
+            <Player player="╳" wins={this.state.player1wins} />
           </Col>
           <Col md={6}>
             <div className="game">
@@ -113,13 +133,8 @@ class Game extends React.Component {
             </div>
           </Col>
           <Col sm={3}>
-            {this.props.twoPlayers ?
-              (<Player />)
-              : (
-                <div className="wins">
-                  <h3 className="player">Computer</h3>
-                  <p>Wins: 0</p>
-                </div>)}
+            {this.props.twoPlayers ? (<Player player="◯" wins={this.state.player2wins} />)
+            : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>
       </Container>
@@ -129,11 +144,12 @@ class Game extends React.Component {
 
 Game.propTypes = {
   unlockForms: PropTypes.func,
-  twoPlayers: PropTypes.bool.isRequired,
+  twoPlayers: PropTypes.bool,
 };
 
 Game.defaultProps = {
   unlockForms: () => {},
+  twoPlayers: true,
 };
 
 export default Game;

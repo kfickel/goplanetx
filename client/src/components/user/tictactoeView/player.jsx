@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
 class Player extends React.Component {
@@ -8,7 +8,6 @@ class Player extends React.Component {
     this.state = {
       playerName: '',
       readyToPlay: false,
-      wins: 0,
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -33,8 +32,8 @@ class Player extends React.Component {
     if (this.state.readyToPlay) {
       return (
         <div className="wins">
-          <h3 className="player">{this.state.playerName}</h3>
-          <p>Wins: {this.state.wins}</p>
+          <h3 className="player">{this.props.player} {this.state.playerName}</h3>
+          <p>Wins: {this.props.wins}</p>
         </div>
       );
     }
@@ -50,9 +49,10 @@ class Player extends React.Component {
   }
 }
 
-// Player.propTypes = {
-
-// };
+Player.propTypes = {
+  wins: PropTypes.number.isRequired,
+  player: PropTypes.string.isRequired,
+};
 
 export default Player;
 
