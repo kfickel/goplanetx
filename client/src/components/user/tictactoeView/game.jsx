@@ -19,10 +19,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i += 1) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { player: squares[a], line: i };
     }
   }
-  return null;
+  return { player: null, line: null };
 }
 
 class Game extends React.Component {
@@ -78,12 +78,12 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext,
     }, () => {
       const winner = calculateWinner(squares);
-      if (winner === '╳') {
+      if (winner.player === '╳') {
         this.setState({
           player1wins: this.state.player1wins + 1,
           gameInPlay: false,
         });
-      } else if (winner === '◯') {
+      } else if (winner.player === '◯') {
         this.setState({
           player2wins: this.state.player2wins + 1,
           gameInPlay: false,
@@ -105,8 +105,8 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     let status;
-    if (winner) {
-      status = `Winner: ${winner}`;
+    if (winner.player) {
+      status = `Winner: ${winner.player}`;
     } else {
       status = `Next player: ${this.state.xIsNext ? '╳' : '◯'}`;
     }
@@ -127,6 +127,7 @@ class Game extends React.Component {
                   squares={current.squares}
                   onClick={i => this.handleClick(i)}
                   unlockForms={this.props.unlockForms}
+                  line={winner.line}
                 />
                 <span><button onClick={this.onReset}>reset</button></span>
               </div>

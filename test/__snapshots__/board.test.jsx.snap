@@ -6,30 +6,17 @@ exports[`Component: Board should match its empty snapshot 1`] = `
     className="board-row"
   >
     <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
     <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
     <Square
-      onClick={[Function]}
-      value={null}
-    />
-  </div>
-  <div
-    className="board-row"
-  >
-    <Square
-      onClick={[Function]}
-      value={null}
-    />
-    <Square
-      onClick={[Function]}
-      value={null}
-    />
-    <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
@@ -38,14 +25,36 @@ exports[`Component: Board should match its empty snapshot 1`] = `
     className="board-row"
   >
     <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
     <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
     <Square
+      line={false}
+      onClick={[Function]}
+      value={null}
+    />
+  </div>
+  <div
+    className="board-row"
+  >
+    <Square
+      line={false}
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      line={false}
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      line={false}
       onClick={[Function]}
       value={null}
     />
@@ -105,6 +114,7 @@ exports[`Component: Game should match its empty snapshot 1`] = `
             </div>
           </div>
           <Board
+            line={null}
             onClick={[Function]}
             squares={
               Array [

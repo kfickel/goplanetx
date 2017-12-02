@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function Square(props) {
   return (
     <button className={`square${props.value ? '-pop' : ''}`} onClick={props.onClick}>
+      {props.line === true ? <div className="vertical line" /> : null}
       {props.value}
     </button>
   );
@@ -35,6 +36,7 @@ class Board extends React.Component {
       <Square
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
+        line={i < 3 && this.props.line - 3 === i}
       />
     );
   }
@@ -54,16 +56,21 @@ class Board extends React.Component {
     return (
       <div>
         <div className="board-row">
+          {this.props.line === 6 ? <div className="diagonal line" /> : null}
+          {this.props.line === 0 ? <div className="line" /> : null}
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
         <div className="board-row">
+          {this.props.line === 1 ? <div className="line" /> : null}
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
         </div>
         <div className="board-row">
+          {this.props.line === 7 ? <div className="backward diagonal line" /> : null}
+          {this.props.line === 2 ? <div className="line" /> : null}
           {this.renderHotSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
@@ -76,17 +83,24 @@ class Board extends React.Component {
 Square.propTypes = {
   onClick: PropTypes.func.isRequired,
   value: PropTypes.string,
+  line: PropTypes.bool,
 };
 
 Square.defaultProps = {
   value: null,
+  line: false,
 };
 
 Board.propTypes = {
   onClick: PropTypes.func.isRequired,
   unlockForms: PropTypes.func.isRequired,
   squares: PropTypes.arrayOf(PropTypes.string).isRequired,
+  line: PropTypes.number,
 };
+
+Board.defaultProps = {
+  line: null,
+}
 
 export {
   Board,
