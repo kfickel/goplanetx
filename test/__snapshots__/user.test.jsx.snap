@@ -5,13 +5,9 @@ exports[`Login component renders correctly should match its empty snapshot 1`] =
   className="container login-container"
 >
   <div>
-    <PageHeader
-      bsClass="page-header"
-    >
-      <small>
-        Login to report a bug:
-      </small>
-    </PageHeader>
+    <h3>
+      Login to report a bug:
+    </h3>
     <ControlLabel
       bsClass="control-label"
       className="login-username"
@@ -57,13 +53,9 @@ exports[`Login component renders correctly should match its empty snapshot 1`] =
     <br />
   </div>
   <div>
-    <PageHeader
-      bsClass="page-header"
-    >
-      <small>
-        Don't have an account? Sign up:
-      </small>
-    </PageHeader>
+    <h3>
+      Don't have an account? Sign up:
+    </h3>
     <Button
       active={false}
       block={false}

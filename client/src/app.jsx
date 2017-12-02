@@ -252,6 +252,7 @@ class App extends React.Component {
             </p>
           </Jumbotron>
           <Game />
+          <br />
           <div className="report-bug-message">
             <p>It looks like you&apos;ve found a bug.  Would you like to report it?</p>
             <Button
