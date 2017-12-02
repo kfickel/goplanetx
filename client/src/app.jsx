@@ -242,6 +242,7 @@ class App extends React.Component {
         <div>
           <h1 className="main-title">Tic Tac Toe</h1>
           <Game />
+          <br />
           <div className="report-bug-message">
             <p>It looks like you&apos;ve found a bug.  Would you like to report it?</p>
             <Button
