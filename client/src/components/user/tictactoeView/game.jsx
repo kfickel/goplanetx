@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Input } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { Board } from './board';
 import Player from './player';
+import Computer from './computer';
 
 function calculateWinner(squares) {
   const lines = [
@@ -35,9 +36,12 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      player1wins: 0,
+      player2wins: 0,
     };
 
     this.onReset = this.onReset.bind(this);
+    this.incrementWins = this.incrementWins.bind(this);
   }
 
   onReset() {
@@ -78,6 +82,14 @@ class Game extends React.Component {
     });
   }
 
+  incrementWins(winner) {
+    // console.log(winner);
+    // if (winner === 'X') {
+    //   this.setState({
+    //     player1wins: 2,
+    //   }, () => console.log(this.state.player1wins));
+    // }
+  }
 
   render() {
     const { history } = this.state;
@@ -87,6 +99,7 @@ class Game extends React.Component {
     let status;
     if (winner) {
       status = `Winner: ${winner}`;
+      this.incrementWins(winner);
     } else {
       status = `Next player: ${this.state.xIsNext ? '╳' : '◯'}`;
     }
@@ -95,7 +108,7 @@ class Game extends React.Component {
       <Container>
         <Row>
           <Col sm={3}>
-            <Player />
+            <Player player="X" wins={this.state.player1wins}/>
           </Col>
           <Col md={6}>
             <div className="game">
@@ -113,13 +126,8 @@ class Game extends React.Component {
             </div>
           </Col>
           <Col sm={3}>
-            {this.props.twoPlayers ?
-              (<Player />)
-              : (
-                <div className="wins">
-                  <h3 className="player">Computer</h3>
-                  <p>Wins: 0</p>
-                </div>)}
+            {this.props.twoPlayers ? (<Player player="O" wins={this.state.player2wins} />)
+            : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>
       </Container>
