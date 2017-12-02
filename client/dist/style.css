@@ -135,9 +135,13 @@ div {
 }
 
 #info {
-  float: right;
   width: 20px;
   height: 20px;
+}
+
+#info-button {
+  float: right;
+  display: inline-block;
 }
 
 #reset {
@@ -145,8 +149,12 @@ div {
 }
 
 #overlay-bug {
+  position: absolute;
+  bottom: 5%;
   font-size: 14px;
   color: blue;
+  display: block;
+  width: 100%;
 }
 
 /*====MAIN STYLES====*/

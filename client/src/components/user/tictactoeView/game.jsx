@@ -137,31 +137,35 @@ class Game extends React.Component {
                 />
                 <span>
                   <button id="reset" onClick={this.onReset}>reset</button>
-                  <img
-                    id="info"
-                    src="images/info.png"
-                    alt="info"
+                  <div
+                    id="info-button"
+                    role="button"
+                    tabIndex={0}
                     onClick={() => this.simpleDialog.show()}
-                  />
+                  >
+                    <img id="info" src="images/info.png" alt="info" />
+                  </div>
                   <SkyLight
                     hideOnOverlayClicked
-                    ref={ref => this.simpleDialog = ref}
+                    ref={(ref) => { this.simpleDialog = ref; }}
                     title="How To Play"
                   >
-                  The object of Tic Tac Toe is to get three in a row.
-                  The first player is known as X and the second is O.
-                  Players alternate placing Xs and Os on the game board until
-                  either oppent has three in a row or all nine squares are filled.
-                  In the event that no one has three in a row, the stalemate is called a cat game.
-                    <div id="overlay-bug">Did you find a bug?</div>
-                    <a href="#login">
-                      <button
-                        onClick={() => { this.props.showLogIn(); this.simpleDialog.hide(); }}
-
-                      >
-                      Report it here.
-                      </button>
-                    </a>
+                    <div>The object of Tic Tac Toe is to get three in a row.
+                    The first player is known as X and the second is O.
+                    Players alternate placing Xs and Os on the game board until
+                    either oppent has three in a row or all nine squares are filled.
+                    In the event that no one has three in a row, the stalemate is called a cat game.
+                    </div>
+                    <div id="overlay-bug">
+                      <div>Did you find a bug?</div>
+                      <a href="#login-here">
+                        <button
+                          onClick={() => { this.props.showLogIn(); this.simpleDialog.hide(); }}
+                        >
+                        Report it here.
+                        </button>
+                      </a>
+                    </div>
                   </SkyLight>
                 </span>
               </div>
