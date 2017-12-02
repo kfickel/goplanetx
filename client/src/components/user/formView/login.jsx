@@ -36,7 +36,7 @@ class Login extends React.Component {
     return (
       <div className="container login-container">
         <div>
-          <PageHeader><small>Login to report a bug:</small></PageHeader>
+          <h3>Login to report a bug:</h3>
           <ControlLabel className="login-username">
             Username
             <FormControl
@@ -66,7 +66,7 @@ class Login extends React.Component {
           <br />
         </div>
         <div>
-          <PageHeader><small>Don&apos;t have an account? Sign up:</small></PageHeader>
+          <h3>Don&apos;t have an account? Sign up:</h3>
           <Button bsStyle="primary" onClick={this.props.showSignUp}>Signup</Button>
         </div>
       </div>

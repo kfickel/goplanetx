@@ -13,6 +13,11 @@ div {
   position: relative;
 }
 
+h3 {
+  color: #8b8c8e;
+  padding-bottom: 10px;
+}
+
 .board-row:after {
   clear: both;
   content: "";
@@ -186,7 +191,6 @@ div {
 
 .control-label {
   text-align: left;
-  padding-top: 30px;
 }
 
 .form-control {
