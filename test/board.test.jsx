@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Game from '../client/src/components/user/tictactoeView/game';
-import { Board, HotSquare } from '../client/src/components/user/tictactoeView/board';
+import { Board, Square } from '../client/src/components/user/tictactoeView/board';
 
 /* TEST GAME COMPONENT */
 
@@ -38,7 +38,7 @@ describe('Component: Hot Button', () => {
     console.log('click handled: ', i);
   };
   it('should match its empty snapshot', () => {
-    const component = shallow(<HotSquare value={value} onClick={handleClick} />);
+    const component = shallow(<Square value={value} onClick={handleClick} />);
     expect(component).toMatchSnapshot();
   });
 });
