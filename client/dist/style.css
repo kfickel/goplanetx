@@ -271,6 +271,12 @@ ol, ul {
   font-size: 18px;
 }
 
+span.moreText {
+  color: blue;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
 .admin-response-container p {
   padding-left: 10px;
   font-size: 14px;

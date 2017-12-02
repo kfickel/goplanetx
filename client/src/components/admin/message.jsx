@@ -14,9 +14,11 @@ class Message extends React.Component {
       messageId: null,
       messageName: `${props.message.first_name} ${props.message.last_name}`,
       showResponseForm: false,
+      hide: true,
     };
     this.markAsComplete = this.markAsComplete.bind(this);
     this.onRespondClick = this.onRespondClick.bind(this);
+    this.showMessage = this.showMessage.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,6 +27,7 @@ class Message extends React.Component {
       messageName: `${nextProps.message.first_name} ${nextProps.message.last_name}`,
     });
   }
+
 
   // Call initiateResponse in adminView with this message's id
   // Nice to have: indicate which response is being responded to
@@ -36,6 +39,12 @@ class Message extends React.Component {
     // if (this.props.message.admin_response === null) {
     //   alert('null');
     // }
+  }
+
+  showMessage() {
+    this.setState({
+      hide: !this.state.hide,
+    });
   }
 
   markAsComplete(id) {
@@ -107,7 +116,11 @@ class Message extends React.Component {
           <span className="message-contact">Contact Information: </span>
           <p>{this.props.message.user_contact}</p>
           <span className="message-body">Message: </span>
-          <p>{this.props.message.user_message}</p>
+          <p className="user-message-body">
+            {this.state.hide ?
+            this.props.message.user_message.slice(0, 100) : this.props.message.user_message}
+            {this.props.message.user_message.length > 99 && <span className="moreText" onClick={this.showMessage}>{this.state.hide ? 'more...' : 'less...'}</span>}
+          </p>
           <span className="message-body">Your Response: </span>
           <p>{this.props.message.admin_response !== null ? this.props.message.admin_response : 'You still need to response to this message'}</p>
         </div>

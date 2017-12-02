@@ -10,7 +10,10 @@ class UserResponses extends React.Component {
 
     this.state = {
       responses: [],
+      hide: true,
     };
+
+    this.showText = this.showText.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +26,12 @@ class UserResponses extends React.Component {
     };
     retrieve();
     setInterval(() => retrieve(), 7000);
+  }
+
+  showText() {
+    this.setState({
+      hide: !this.state.hide,
+    });
   }
 
   render() {
@@ -49,6 +58,8 @@ class UserResponses extends React.Component {
                   showSubmissionForm={this.props.showSubmissionForm}
                   key={JSON.stringify(response)}
                   response={response}
+                  showText={this.showText}
+                  hide={this.state.hide}
                 />
             ))}
           </ul>
