@@ -21,6 +21,7 @@ exports[`Login component renders correctly should match its empty snapshot 1`] =
       <FormControl
         bsClass="form-control"
         componentClass="input"
+        id="login-here"
         onChange={[Function]}
         placeholder="username..."
         type="text"

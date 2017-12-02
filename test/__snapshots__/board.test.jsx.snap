@@ -133,10 +133,89 @@ exports[`Component: Game should match its empty snapshot 1`] = `
           />
           <span>
             <button
+              id="reset"
               onClick={[Function]}
             >
               reset
             </button>
+            <div
+              id="info-button"
+              onClick={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <img
+                alt="info"
+                id="info"
+                src="images/info.png"
+              />
+            </div>
+            <SkyLight
+              closeButtonStyle={
+                Object {
+                  "cursor": "pointer",
+                  "fontSize": "1.8em",
+                  "position": "absolute",
+                  "right": "10px",
+                  "top": "0px",
+                }
+              }
+              closeOnEsc={true}
+              dialogStyles={
+                Object {
+                  "backgroundColor": "#fff",
+                  "borderRadius": "2px",
+                  "boxShadow": "0px 0px 4px rgba(0,0,0,.14),0px 4px 8px rgba(0,0,0,.28)",
+                  "height": "400px",
+                  "left": "50%",
+                  "marginLeft": "-25%",
+                  "marginTop": "-200px",
+                  "padding": "15px",
+                  "position": "fixed",
+                  "top": "50%",
+                  "width": "50%",
+                  "zIndex": "100",
+                }
+              }
+              hideOnOverlayClicked={true}
+              overlayStyles={
+                Object {
+                  "backgroundColor": "rgba(0,0,0,0.3)",
+                  "display": "none",
+                  "height": "100%",
+                  "left": "0px",
+                  "position": "fixed",
+                  "top": "0px",
+                  "transitionProperty": "all",
+                  "transitionTimingFunction": "ease",
+                  "width": "100%",
+                  "zIndex": "99",
+                }
+              }
+              showOverlay={true}
+              title="How To Play"
+              transitionDuration={200}
+            >
+              <div>
+                The object of Tic Tac Toe is to get three in a row. The first player is known as X and the second is O. Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled. In the event that no one has three in a row, the stalemate is called a cat game.
+              </div>
+              <div
+                id="overlay-bug"
+              >
+                <div>
+                  Did you find a bug?
+                </div>
+                <a
+                  href="#login-here"
+                >
+                  <button
+                    onClick={[Function]}
+                  >
+                    Report it here.
+                  </button>
+                </a>
+              </div>
+            </SkyLight>
           </span>
         </div>
       </div>
