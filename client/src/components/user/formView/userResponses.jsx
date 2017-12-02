@@ -49,7 +49,7 @@ class UserResponses extends React.Component {
             Send a new message
             </Button>
           </div>
-          <ul>
+          <ul className="playerInboxMesssages">
             {this.state.responses
               .sort((a, b) => a.admin_complete - b.admin_complete
                 || Date.parse(b.createdAt) - Date.parse(a.createdAt))

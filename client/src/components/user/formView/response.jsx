@@ -23,7 +23,7 @@ function Response(props) {
     } else if (!props.hide && message.length > 99) {
       return (<p>{message}{more}</p>);
     }
-    return message;
+    return <p>message</p>;
   };
 
   // Render all admin responses for this user in reverse
@@ -39,7 +39,7 @@ function Response(props) {
         <span className="message-body">
           Your original message:
         </span>
-        <p className="user-message-body">{messageToggle(props.response.user_message)}</p>
+        {messageToggle(props.response.user_message)}
         <span className="response-body">Response: </span>
         {adminResponse()}
       </div>
