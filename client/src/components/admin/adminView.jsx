@@ -37,7 +37,6 @@ class AdminView extends React.Component {
     setInterval(() => retrieve(), 7000);
   }
 
-
   //  sets state variable messageId to currently selected message's id
   setResponseId(id) {
     this.setState({
