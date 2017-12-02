@@ -27,7 +27,13 @@ function Response(props) {
           {props.hide ?
           props.response.user_message.slice(0, 100) : props.response.user_message}
           {props.response.user_message.length > 99 &&
-          <span className="moreText" onClick={props.showText}>{props.hide ? 'more...' : 'less...'}</span>}
+          <span
+            className="moreText"
+            role="presentation"
+            onClick={props.showText}
+          >
+            {props.hide ? 'more...' : 'less...'}
+          </span>}
         </p>
         <span className="response-body">Response: </span>
         <p>{adminResponse()}</p>

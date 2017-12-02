@@ -119,7 +119,10 @@ class Message extends React.Component {
           <p className="user-message-body">
             {this.state.hide ?
             this.props.message.user_message.slice(0, 100) : this.props.message.user_message}
-            {this.props.message.user_message.length > 99 && <span className="moreText" onClick={this.showMessage}>{this.state.hide ? 'more...' : 'less...'}</span>}
+            {this.props.message.user_message.length > 99 &&
+            <span className="moreText" role="presentation" onClick={this.showMessage}>
+              {this.state.hide ? 'more...' : 'less...'}
+            </span>}
           </p>
           <span className="message-body">Your Response: </span>
           <p>{this.props.message.admin_response !== null ? this.props.message.admin_response : 'You still need to response to this message'}</p>
