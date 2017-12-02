@@ -42,6 +42,7 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
     className="message-container-header"
   >
     <SplitButton
+      className="order"
       id="message-sort"
       onClick={[Function]}
       onSelect={[Function]}
@@ -94,6 +95,50 @@ exports[`Component: AdminView should match its empty snapshot 1`] = `
         type="text"
       />
     </div>
+    <DropdownButton
+      className="filter"
+      id="message-filter"
+      onSelect={[Function]}
+      pullRight={true}
+      title="All"
+    >
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="All"
+      >
+        All
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="Pending"
+      >
+        Pending
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="Responded"
+      >
+        Responded
+      </MenuItem>
+      <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        id="Complete"
+      >
+        Complete
+      </MenuItem>
+    </DropdownButton>
   </div>
   <ul
     className="user-message-ul"

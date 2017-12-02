@@ -43,7 +43,7 @@ class App extends React.Component {
     this.logInUser = this.logInUser.bind(this);
     this.showSignUp = this.showSignUp.bind(this);
     this.createUser = this.createUser.bind(this);
-    this.retrieveOpenMessages = this.retrieveOpenMessages.bind(this);
+    this.retrieveMessages = this.retrieveMessages.bind(this);
     this.retrieveResponses = this.retrieveResponses.bind(this);
     this.conditionalRender = this.conditionalRender.bind(this);
     this.onLogoutUser = this.onLogoutUser.bind(this);
@@ -159,7 +159,7 @@ class App extends React.Component {
     });
   }
 
-  retrieveOpenMessages(callback) {
+  retrieveMessages(callback) {
     if (window.sessionStorage.getItem('type') !== '') {
       this.setState({
         username: window.sessionStorage.getItem('user'),
@@ -372,7 +372,7 @@ class App extends React.Component {
               {this.state.type === 'admin' ? <AdminNavigation /> : null}
               <AdminView
                 showLogIn={this.showLogIn}
-                retrieveOpenMessages={this.retrieveOpenMessages}
+                retrieveMessages={this.retrieveMessages}
                 username={this.state.username}
               />
             </div>
