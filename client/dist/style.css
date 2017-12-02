@@ -204,7 +204,7 @@ ol, ul {
 }
 
 .user-message-container p {
-  display: inline;
+  padding-left: 10px;
   font-size: 14px;
   margin: 3px;
 }
@@ -255,7 +255,6 @@ ol, ul {
 
 .admin-response-container p {
   padding-left: 10px;
-  display: inline;
   font-size: 14px;
 }
 
