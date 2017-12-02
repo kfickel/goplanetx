@@ -37,7 +37,7 @@ exports[`Component: Board should match its empty snapshot 1`] = `
   <div
     className="board-row"
   >
-    <HotSquare
+    <Square
       onClick={[Function]}
       value={null}
     />
@@ -73,7 +73,10 @@ exports[`Component: Game should match its empty snapshot 1`] = `
         ]
       }
     >
-      <Player />
+      <Player
+        player="╳"
+        wins={0}
+      />
     </Col>
     <Col
       md={6}
@@ -141,7 +144,10 @@ exports[`Component: Game should match its empty snapshot 1`] = `
         ]
       }
     >
-      <Player />
+      <Player
+        player="◯"
+        wins={0}
+      />
     </Col>
   </Row>
 </Container>
@@ -149,7 +155,7 @@ exports[`Component: Game should match its empty snapshot 1`] = `
 
 exports[`Component: Hot Button should match its empty snapshot 1`] = `
 <button
-  className="square"
+  className="square-pop"
   onClick={[Function]}
 >
   X

@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button className={`square${props.value ? '-pop' : ''}`} onClick={props.onClick}>
       {props.value}
     </button>
   );
-}
-
-function HotSquare(props) {
-  return <button className="square" onClick={props.onClick}>{props.value}</button>;
 }
 
 class Board extends React.Component {
@@ -45,7 +41,7 @@ class Board extends React.Component {
 
   renderHotSquare(i) {
     return (
-      <HotSquare
+      <Square
         value={this.props.squares[i]}
         onClick={() => {
           this.incrementHotSquareClickCount();
@@ -86,15 +82,6 @@ Square.defaultProps = {
   value: null,
 };
 
-HotSquare.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  value: PropTypes.string,
-};
-
-HotSquare.defaultProps = {
-  value: null,
-};
-
 Board.propTypes = {
   onClick: PropTypes.func.isRequired,
   unlockForms: PropTypes.func.isRequired,
@@ -103,5 +90,5 @@ Board.propTypes = {
 
 export {
   Board,
-  HotSquare,
-}
+  Square,
+};

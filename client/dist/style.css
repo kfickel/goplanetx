@@ -19,7 +19,7 @@ ol, ul {
   margin-bottom: 10px;
 }
 
-.square {
+.square, .square-pop {
   background: #fff;
   border: 1px solid #999;
   float: left;
@@ -33,8 +33,25 @@ ol, ul {
   width: 150px;
 }
 
-.square:focus {
+.square:focus, .square-pop:focus {
   outline: none;
+}
+
+@keyframes pop {
+    0% {
+        background-color: #ffe451;
+        transform: scale(1.15, 1.15);
+    }
+    100% {
+        background-color: white;
+        transform: scale(1, 1);
+    }
+}
+
+.square-pop {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-name: pop;
 }
 
 .kbd-navigation .square:focus {
