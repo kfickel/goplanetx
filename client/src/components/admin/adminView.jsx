@@ -52,9 +52,7 @@ class AdminView extends React.Component {
       });
     };
     retrieve();
-    setInterval(() => {
-      retrieve();
-    }, 3000);
+    setInterval(() => retrieve(), 3000);
   }
 
 
