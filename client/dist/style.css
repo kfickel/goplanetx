@@ -132,6 +132,10 @@ h3 {
   margin: auto;
 }
 
+.board {
+  padding-bottom: 5px;
+}
+
 .player {
   text-align: center;
   color: #4B586E;
