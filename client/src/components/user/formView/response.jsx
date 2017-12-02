@@ -39,7 +39,7 @@ function Response(props) {
         <span className="message-body">
           Your original message:
         </span>
-        <p className="user-message-body">{messageToggle(props.response.user_message)}</p>
+        {messageToggle(props.response.user_message)}
         <span className="response-body">Response: </span>
         {adminResponse()}
       </div>
