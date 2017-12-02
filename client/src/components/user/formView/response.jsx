@@ -20,12 +20,10 @@ function Response(props) {
       <div className="response-contents group">
         <span className="message-created-at">Created: </span>
         <p>{moment(props.response.updatedAt).format('MMMM Do YYYY, h:mm a')}</p>
-        <br />
         <span className="message-body">
           Your original message:
         </span>
         <p>{props.response.user_message}</p>
-        <br />
         <span className="response-body">Response: </span>
         <p>{adminResponse()}</p>
       </div>

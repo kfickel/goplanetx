@@ -63,19 +63,13 @@ class Message extends React.Component {
         <div className="user-message-container group">
           <div className="message-contents group">
             <span className="message-created-at">Created: </span><p>{moment(this.props.message.createdAt).format('MMMM Do YYYY, h:mm a')}</p>
-            <br />
             <span className="message-name">Name: </span>
             <p>{this.props.message.first_name} {this.props.message.last_name}</p>
-            <br />
             <span className="message-urgency">Urgency: </span>
             <p>{this.props.message.user_urgency}</p>
-            <br />
             <span className="message-contact">Contact Information: </span>
-            <br />
             <p>{this.props.message.user_contact}</p>
-            <br />
             <span className="message-body">Message: </span>
-            <br />
             <p className="user-message-body">{this.props.message.user_message}</p>
           </div>
           <div className="message-actions group">
@@ -106,20 +100,16 @@ class Message extends React.Component {
       <div className="user-message-container group">
         <div className="message-contents group">
           <span className="message-created-at">Created: </span><p>{moment(this.props.message.createdAt).format('MMMM Do YYYY, h:mm a')}</p>
-          <br />
-          <span className="message-name">
-            Name: <p>{this.props.message.first_name} {this.props.message.last_name}</p>
-          </span>
-          <br />
-          <span className="message-urgency">Urgency: <p>{this.props.message.user_urgency}</p></span>
-          <br />
-          <span className="message-contact">
-            Contact Information: <p>{this.props.message.user_contact}</p>
-          </span>
-          <br />
-          <span className="message-body">Message: <p>{this.props.message.user_message}</p></span>
-          <br />
-          <span className="message-body">Your Response: <p>{this.props.message.admin_response !== null ? this.props.message.admin_response : 'You still need to response to this message'}</p></span>
+          <span className="message-name">Name: </span>
+          <p>{this.props.message.first_name} {this.props.message.last_name}</p>
+          <span className="message-urgency">Urgency: </span>
+          <p>{this.props.message.user_urgency}</p>
+          <span className="message-contact">Contact Information: </span>
+          <p>{this.props.message.user_contact}</p>
+          <span className="message-body">Message: </span>
+          <p>{this.props.message.user_message}</p>
+          <span className="message-body">Your Response: </span>
+          <p>{this.props.message.admin_response !== null ? this.props.message.admin_response : 'You still need to response to this message'}</p>
         </div>
         <div className="message-actions group">
           <Checkbox
