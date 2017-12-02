@@ -165,7 +165,7 @@ div {
 }
 
 .form-control {
-  min-width: 400px;
+  min-width: 250px;
 }
 
 /*====CLEARFIX====*/
@@ -335,6 +335,8 @@ span.moreText {
   font-size: 14px;
   text-decoration: underline;
 }
+
+
 
 .admin-response-container p {
   padding-left: 10px;
