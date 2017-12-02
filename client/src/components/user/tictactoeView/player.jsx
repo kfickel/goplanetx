@@ -32,8 +32,7 @@ class Player extends React.Component {
     if (this.state.readyToPlay) {
       return (
         <div className="wins">
-          <h2> {this.props.player} </h2>
-          <h3 className="player">{this.state.playerName}</h3>
+          <h3 className="player">{this.props.player} {this.state.playerName}</h3>
           <p>Wins: {this.props.wins}</p>
         </div>
       );

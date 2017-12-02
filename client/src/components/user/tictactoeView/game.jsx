@@ -38,10 +38,11 @@ class Game extends React.Component {
       xIsNext: true,
       player1wins: 0,
       player2wins: 0,
+      gameInPlay: true,
     };
 
     this.onReset = this.onReset.bind(this);
-    this.incrementWins = this.incrementWins.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   onReset() {
@@ -53,6 +54,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      gameInPlay: true,
     });
   }
 
@@ -60,9 +62,11 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+
+    if (!this.state.gameInPlay || squares[i]) {
       return;
     }
+
     squares[i] = this.state.xIsNext ? '╳' : '◯';
     this.setState({
       history: history.concat([
@@ -72,6 +76,19 @@ class Game extends React.Component {
       ]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
+    }, () => {
+      const winner = calculateWinner(squares);
+      if (winner === '╳') {
+        this.setState({
+          player1wins: this.state.player1wins + 1,
+          gameInPlay: false,
+        });
+      } else if (winner === '◯') {
+        this.setState({
+          player2wins: this.state.player2wins + 1,
+          gameInPlay: false,
+        });
+      }
     });
   }
 
@@ -82,15 +99,6 @@ class Game extends React.Component {
     });
   }
 
-  incrementWins(winner) {
-    // console.log(winner);
-    // if (winner === 'X') {
-    //   this.setState({
-    //     player1wins: 2,
-    //   }, () => console.log(this.state.player1wins));
-    // }
-  }
-
   render() {
     const { history } = this.state;
     const current = history[this.state.stepNumber];
@@ -99,7 +107,6 @@ class Game extends React.Component {
     let status;
     if (winner) {
       status = `Winner: ${winner}`;
-      this.incrementWins(winner);
     } else {
       status = `Next player: ${this.state.xIsNext ? '╳' : '◯'}`;
     }
@@ -108,7 +115,7 @@ class Game extends React.Component {
       <Container>
         <Row>
           <Col sm={3}>
-            <Player player="X" wins={this.state.player1wins}/>
+            <Player player="╳" wins={this.state.player1wins} />
           </Col>
           <Col md={6}>
             <div className="game">
@@ -126,7 +133,7 @@ class Game extends React.Component {
             </div>
           </Col>
           <Col sm={3}>
-            {this.props.twoPlayers ? (<Player player="O" wins={this.state.player2wins} />)
+            {this.props.twoPlayers ? (<Player player="◯" wins={this.state.player2wins} />)
             : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>

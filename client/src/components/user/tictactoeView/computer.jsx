@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 class Computer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      wins: 0,
-    };
+    this.state = {};
   }
 
   render() {
