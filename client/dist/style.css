@@ -225,12 +225,10 @@ div {
 
 .logout {
   float: right;
-  padding: 5px;
 }
 
 .messages-logout {
   text-align: center;
-  /*margin: 30px auto 100px auto;*/
   width: 20%;
 }
 
