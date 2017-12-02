@@ -46,6 +46,7 @@ div {
   0% {
     background-color: #ffe451;
     transform: scale(1.15, 1.15);
+    z-index: 1;
   }
   100% {
     background-color: white;
