@@ -110,23 +110,25 @@ class AdminView extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button
-          onClick={() => this.props.showLogIn()}
-          className="admin-change-user-button"
-          bsSize="small"
-          bsStyle="primary"
-        >
-          Logout
-        </Button>
-        <Button
-          onClick={this.addEmail}
-          className="admin-change-user-button"
-          bsSize="small"
-          bsStyle="primary"
-        >
-          Click for email notifications
-        </Button>
+      <div id="admin-container">
+        <div>
+          <Button
+            onClick={() => this.props.showLogIn()}
+            className="admin-change-user-button"
+            bsSize="small"
+            bsStyle="primary"
+          >
+            Logout
+          </Button>
+          <Button
+            onClick={this.addEmail}
+            className="admin-change-user-button"
+            bsSize="small"
+            bsStyle="primary"
+          >
+            Click for email notifications
+          </Button>
+        </div>
         <div className="admin-header group">
           <h3 className="welcome-header">Welcome to Your Inbox!</h3>
           <h4>You can view and respond to user messages here.</h4>

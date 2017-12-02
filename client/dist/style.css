@@ -46,6 +46,7 @@ div {
   0% {
     background-color: #ffe451;
     transform: scale(1.15, 1.15);
+    z-index: 1;
   }
   100% {
     background-color: white;
@@ -238,6 +239,18 @@ div {
   text-align: center;
 }
 
+#admin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#admin-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .message-container-header {
   display: flex;
   padding-left: 40px;
@@ -271,7 +284,8 @@ div {
 .user-message-ul {
   margin: 5px 10px;
   width: 100%;
-  height: 700px;
+  height: 0px;
+  flex-grow: 1;
   overflow: scroll;
 }
 
