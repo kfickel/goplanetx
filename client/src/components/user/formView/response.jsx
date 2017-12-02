@@ -10,6 +10,22 @@ function Response(props) {
     }
     return 'No response yet; keep checking back';
   };
+
+  const more = (
+    <span className="moreText" role="presentation" onClick={props.showText} >
+      {props.hide ? 'more...' : 'less...'}
+    </span>
+  );
+
+  const messageToggle = (message) => {
+    if (props.hide && message.length > 99) {
+      return (<p>{message.slice(0, 100)}{more}</p>);
+    } else if (!props.hide && message.length > 99) {
+      return (<p>{message}{more}</p>);
+    }
+    return message;
+  };
+
   // Render all admin responses for this user in reverse
   // chronological order of original message submission date
   return (
@@ -23,20 +39,9 @@ function Response(props) {
         <span className="message-body">
           Your original message:
         </span>
-        <p className="user-message-body">
-          {props.hide ?
-          props.response.user_message.slice(0, 100) : props.response.user_message}
-          {props.response.user_message.length > 99 &&
-          <span
-            className="moreText"
-            role="presentation"
-            onClick={props.showText}
-          >
-            {props.hide ? 'more...' : 'less...'}
-          </span>}
-        </p>
+        <p className="user-message-body">{messageToggle(props.response.user_message)}</p>
         <span className="response-body">Response: </span>
-        <p>{adminResponse()}</p>
+        {adminResponse()}
       </div>
       <div className="response-actions group">
         <Button

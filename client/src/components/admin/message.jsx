@@ -67,6 +67,21 @@ class Message extends React.Component {
   // Render all open user messages in reverse chrono order
   // Nice to have: order by urgency
   render() {
+    const more = (
+      <span className="moreText" role="presentation" onClick={this.showMessage}>
+        {this.state.hide ? 'more...' : 'less...'}
+      </span>
+    );
+
+    const messageToggle = (message) => {
+      if (this.state.hide && message.length > 99) {
+        return (<p>{message.slice(0, 100)}{more}</p>);
+      } else if (!this.state.hide && message.length > 99) {
+        return (<p>{message}{more}</p>);
+      }
+      return message;
+    };
+
     if (this.state.showResponseForm) {
       return (
         <div className="user-message-container group">
@@ -116,14 +131,7 @@ class Message extends React.Component {
           <span className="message-contact">Contact Information: </span>
           <p>{this.props.message.user_contact}</p>
           <span className="message-body">Message: </span>
-          <p className="user-message-body">
-            {this.state.hide ?
-            this.props.message.user_message.slice(0, 100) : this.props.message.user_message}
-            {this.props.message.user_message.length > 99 &&
-            <span className="moreText" role="presentation" onClick={this.showMessage}>
-              {this.state.hide ? 'more...' : 'less...'}
-            </span>}
-          </p>
+          {messageToggle(this.props.message.user_message)}
           <span className="message-body">Your Response: </span>
           <p>{this.props.message.admin_response !== null ? this.props.message.admin_response : 'You still need to response to this message'}</p>
         </div>
