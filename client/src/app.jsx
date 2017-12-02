@@ -349,6 +349,7 @@ class App extends React.Component {
         <Game
           twoPlayers={this.state.twoPlayers}
           unlockForms={this.unlockForms}
+          showLogIn={this.showLogIn}
         />
       </div>
     );

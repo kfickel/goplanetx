@@ -38,12 +38,14 @@ class Login extends React.Component {
         <div>
           <PageHeader><small>Login to report a bug:</small></PageHeader>
           <ControlLabel className="login-username">
-            Username
-            <FormControl
-              type="text"
-              placeholder="username..."
-              onChange={this.onUsernameChange}
-            />
+              Username
+            <a name="login">
+              <FormControl
+                type="text"
+                placeholder="username..."
+                onChange={this.onUsernameChange}
+              />
+            </a>
           </ControlLabel>
           <br />
           <ControlLabel className="login-password">

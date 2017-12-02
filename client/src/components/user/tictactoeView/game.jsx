@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import { Board } from './board';
+import SkyLight from 'react-skylight';
 import Player from './player';
 import Computer from './computer';
 
@@ -92,6 +93,11 @@ class Game extends React.Component {
     });
   }
 
+  handleHover() {
+    console.log('hover!');
+    return (<div> HOVER </div>);
+  }
+
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -129,7 +135,35 @@ class Game extends React.Component {
                   unlockForms={this.props.unlockForms}
                   line={winner.line}
                 />
-                <span><button onClick={this.onReset}>reset</button></span>
+                <span>
+                  <button id="reset" onClick={this.onReset}>reset</button>
+                  <img
+                    id="info"
+                    src="images/info.png"
+                    alt="info"
+                    onClick={() => this.simpleDialog.show()}
+                  />
+                  <SkyLight
+                    hideOnOverlayClicked
+                    ref={ref => this.simpleDialog = ref}
+                    title="How To Play"
+                  >
+                  The object of Tic Tac Toe is to get three in a row.
+                  The first player is known as X and the second is O.
+                  Players alternate placing Xs and Os on the game board until
+                  either oppent has three in a row or all nine squares are filled.
+                  In the event that no one has three in a row, the stalemate is called a cat game.
+                    <div id="overlay-bug">Did you find a bug?</div>
+                    <a href="#login">
+                      <button
+                        onClick={() => { this.props.showLogIn(); this.simpleDialog.hide(); }}
+
+                      >
+                      Report it here.
+                      </button>
+                    </a>
+                  </SkyLight>
+                </span>
               </div>
             </div>
           </Col>
@@ -146,11 +180,13 @@ class Game extends React.Component {
 Game.propTypes = {
   unlockForms: PropTypes.func,
   twoPlayers: PropTypes.bool,
+  showLogIn: PropTypes.func,
 };
 
 Game.defaultProps = {
   unlockForms: () => {},
   twoPlayers: true,
+  showLogIn: () => {},
 };
 
 export default Game;

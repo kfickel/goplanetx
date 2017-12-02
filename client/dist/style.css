@@ -134,6 +134,21 @@ div {
   font-size: 36px;
 }
 
+#info {
+  float: right;
+  width: 20px;
+  height: 20px;
+}
+
+#reset {
+  margin-left: 20px;
+}
+
+#overlay-bug {
+  font-size: 14px;
+  color: blue;
+}
+
 /*====MAIN STYLES====*/
 * {
   font-family: 'Merriweather Sans', sans-serif;
