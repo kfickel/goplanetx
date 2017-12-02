@@ -211,6 +211,8 @@ class App extends React.Component {
   showSignUp() {
     this.setState({
       view: 'signup',
+    }, () => {
+      this.props.history.push('/');
     });
   }
 

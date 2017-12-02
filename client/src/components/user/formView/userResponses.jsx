@@ -22,7 +22,7 @@ class UserResponses extends React.Component {
       });
     };
     retrieve();
-    setInterval(() => retrieve(), 3000);
+    setInterval(() => retrieve(), 7000);
   }
 
   render() {

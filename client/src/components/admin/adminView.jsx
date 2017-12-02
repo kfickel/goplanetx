@@ -11,26 +11,7 @@ class AdminView extends React.Component {
     super(props);
     this.state = {
       // example data for mocking
-      messages: [
-        {
-          id: 1,
-          createdAt: '2017-11-30T00:49:35.000Z',
-          first_name: 'Jane',
-          last_name: 'Smith',
-          user_message: 'Test message',
-          user_contact: 'Test contact info',
-          user_urgency: 3,
-        },
-        {
-          id: 2,
-          createdAt: '2017-11-30T00:49:35.000Z',
-          first_name: 'Lady',
-          last_name: 'Person',
-          user_message: 'Test message 2',
-          user_contact: 'Test contact info 2',
-          user_urgency: 1,
-        },
-      ],
+      messages: [],
       messageId: null,
       search: '',
       sort: { by: 'createdAt', order: -1 },
@@ -52,7 +33,7 @@ class AdminView extends React.Component {
       });
     };
     retrieve();
-    setInterval(() => retrieve(), 3000);
+    setInterval(() => retrieve(), 7000);
   }
 
 
