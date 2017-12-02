@@ -270,6 +270,9 @@ div {
 
 .user-message-ul {
   margin: 5px 10px;
+  width: 100%;
+  height: 700px;
+  overflow: scroll;
 }
 
 .user-message-container span {
@@ -375,7 +378,7 @@ span.moreText {
 }
 
 .change-view-button {
-  margin: 30px auto 100px auto;
+  margin: 30px auto 30px auto;
   width: 20%;
 }
 
