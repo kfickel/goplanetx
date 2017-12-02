@@ -368,7 +368,7 @@ class App extends React.Component {
         <Route
           path="/admin/messages"
           render={() => (window.sessionStorage.getItem('type') === '' ? <Redirect to="/admin" /> : (
-            <div>
+            <div id="admin">
               {this.state.type === 'admin' ? <AdminNavigation /> : null}
               <AdminView
                 showLogIn={this.showLogIn}
@@ -381,7 +381,7 @@ class App extends React.Component {
         <Route
           path="/admin/users"
           render={() => (window.sessionStorage.getItem('type') === '' ? <Redirect to="/admin" /> : (
-            <div>
+            <div id="admin">
               <AdminNavigation />
               <Users />
             </div>

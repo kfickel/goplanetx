@@ -1,31 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: AdminView should match its empty snapshot 1`] = `
-<div>
-  <Button
-    active={false}
-    block={false}
-    bsClass="btn"
-    bsSize="small"
-    bsStyle="primary"
-    className="admin-change-user-button"
-    disabled={false}
-    onClick={[Function]}
-  >
-    Logout
-  </Button>
-  <Button
-    active={false}
-    block={false}
-    bsClass="btn"
-    bsSize="small"
-    bsStyle="primary"
-    className="admin-change-user-button"
-    disabled={false}
-    onClick={[Function]}
-  >
-    Click for email notifications
-  </Button>
+<div
+  id="admin-container"
+>
+  <div>
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsSize="small"
+      bsStyle="primary"
+      className="admin-change-user-button"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Logout
+    </Button>
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsSize="small"
+      bsStyle="primary"
+      className="admin-change-user-button"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Click for email notifications
+    </Button>
+  </div>
   <div
     className="admin-header group"
   >
