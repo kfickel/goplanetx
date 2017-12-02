@@ -134,6 +134,30 @@ div {
   font-size: 36px;
 }
 
+#info {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+#info-button {
+  float: right;
+  display: inline-block;
+}
+
+#reset {
+  margin-left: 20px;
+}
+
+#overlay-bug {
+  position: absolute;
+  bottom: 5%;
+  font-size: 14px;
+  color: blue;
+  display: block;
+  width: 100%;
+}
+
 /*====MAIN STYLES====*/
 * {
   font-family: 'Merriweather Sans', sans-serif;

@@ -40,6 +40,7 @@ class Login extends React.Component {
           <ControlLabel className="login-username">
             Username
             <FormControl
+              id="login-here"
               type="text"
               placeholder="username..."
               onChange={this.onUsernameChange}
