@@ -23,7 +23,7 @@ function Response(props) {
     } else if (!props.hide && message.length > 99) {
       return (<p>{message}{more}</p>);
     }
-    return message;
+    return <p>message</p>;
   };
 
   // Render all admin responses for this user in reverse

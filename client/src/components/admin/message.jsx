@@ -79,7 +79,7 @@ class Message extends React.Component {
       } else if (!this.state.hide && message.length > 99) {
         return (<p>{message}{more}</p>);
       }
-      return message;
+      return <p>message</p>;
     };
 
     if (this.state.showResponseForm) {

@@ -225,6 +225,7 @@ div {
 
 .logout {
   float: right;
+  padding: 5px;
 }
 
 .messages-logout {
@@ -336,7 +337,11 @@ span.moreText {
   text-decoration: underline;
 }
 
-
+.playerInboxMesssages {
+  width: 100%;
+  height: 400px;
+  overflow: scroll;
+}
 
 .admin-response-container p {
   padding-left: 10px;
