@@ -54,7 +54,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="board">
         <div className="board-row">
           {this.props.line === 6 ? <div className="diagonal line" /> : null}
           {this.props.line === 0 ? <div className="line" /> : null}
