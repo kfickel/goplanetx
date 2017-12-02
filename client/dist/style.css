@@ -9,6 +9,10 @@ ol, ul {
   padding-left: 30px;
 }
 
+div {
+  position: relative;
+}
+
 .board-row:after {
   clear: both;
   content: "";
@@ -31,6 +35,7 @@ ol, ul {
   padding: 0;
   text-align: center;
   width: 150px;
+  position: relative;
 }
 
 .square:focus, .square-pop:focus {
@@ -38,20 +43,74 @@ ol, ul {
 }
 
 @keyframes pop {
-    0% {
-        background-color: #ffe451;
-        transform: scale(1.15, 1.15);
-    }
-    100% {
-        background-color: white;
-        transform: scale(1, 1);
-    }
+  0% {
+    background-color: #ffe451;
+    transform: scale(1.15, 1.15);
+  }
+  100% {
+    background-color: white;
+    transform: scale(1, 1);
+  }
 }
 
 .square-pop {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-name: pop;
+}
+
+
+@keyframes draw {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 440px;
+  }
+}
+
+@keyframes draw-diagonal {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 623px;
+  }
+}
+
+.line {
+  transform-origin: top left;
+  background: rgba(255, 180, 80, 0.7);
+  width: 440px;
+  height: 8px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 2;
+  top: 69px;
+  left: 4px;
+  animation-duration: 0.5s;
+  animation-name: draw;
+}
+
+.vertical {
+  transform: rotate(90deg);
+  top: 4px;
+  left: 78px;
+}
+
+.diagonal {
+  transform: rotate(45deg);
+  width: 623px;
+  top: 0px;
+  left: 7px;
+  animation-name: draw-diagonal;
+}
+
+.backward {
+  transform: rotate(-45deg);
+  transform-origin: bottom left;
+  top: 140px;
+  left: 6px;
 }
 
 .kbd-navigation .square:focus {
