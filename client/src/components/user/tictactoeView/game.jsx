@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
-import { Board } from './board';
 import SkyLight from 'react-skylight';
+import { Board } from './board';
 import Player from './player';
 import Computer from './computer';
 
