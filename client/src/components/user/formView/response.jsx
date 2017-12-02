@@ -10,12 +10,28 @@ function Response(props) {
     }
     return 'No response yet; keep checking back';
   };
+
+  const more = (
+    <span className="moreText" role="presentation" onClick={props.showText} >
+      {props.hide ? 'more...' : 'less...'}
+    </span>
+  );
+
+  const messageToggle = (message) => {
+    if (props.hide && message.length > 99) {
+      return (<p>{message.slice(0, 100)}{more}</p>);
+    } else if (!props.hide && message.length > 99) {
+      return (<p>{message}{more}</p>);
+    }
+    return message;
+  };
+
   // Render all admin responses for this user in reverse
   // chronological order of original message submission date
   return (
-    <div className={'admin-response-container group ' +
-      (props.response.admin_response ? 'response ' : '') +
-      (props.response.admin_complete ? 'complete' : '')}
+    <div className={`admin-response-container group 
+          ${props.response.admin_response ? 'response ' : ''}
+          ${props.response.admin_complete ? 'complete' : ''}`}
     >
       <div className="response-contents group">
         <span className="message-created-at">Created: </span>
@@ -23,9 +39,9 @@ function Response(props) {
         <span className="message-body">
           Your original message:
         </span>
-        <p>{props.response.user_message}</p>
+        <p className="user-message-body">{messageToggle(props.response.user_message)}</p>
         <span className="response-body">Response: </span>
-        <p>{adminResponse()}</p>
+        {adminResponse()}
       </div>
       <div className="response-actions group">
         <Button
@@ -48,6 +64,8 @@ Response.propTypes = {
     admin_complete: PropTypes.boolean,
   }).isRequired,
   showSubmissionForm: PropTypes.func.isRequired,
+  hide: PropTypes.bool.isRequired,
+  showText: PropTypes.func.isRequired,
 };
 
 export default Response;
