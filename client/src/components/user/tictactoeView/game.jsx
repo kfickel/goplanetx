@@ -144,11 +144,12 @@ class Game extends React.Component {
 
 Game.propTypes = {
   unlockForms: PropTypes.func,
-  twoPlayers: PropTypes.bool.isRequired,
+  twoPlayers: PropTypes.bool,
 };
 
 Game.defaultProps = {
   unlockForms: () => {},
+  twoPlayers: true,
 };
 
 export default Game;
