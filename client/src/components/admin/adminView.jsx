@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { Button, SplitButton, MenuItem } from 'react-bootstrap';
+import { Button, SplitButton, MenuItem, DropdownButton } from 'react-bootstrap';
 import FlipMove from 'react-flip-move';
 import Message from './message';
 
@@ -15,6 +15,7 @@ class AdminView extends React.Component {
       messageId: null,
       search: '',
       sort: { by: 'createdAt', order: -1 },
+      filter: 'All',
       // response: '',
     };
     this.setResponseId = this.setResponseId.bind(this);
@@ -25,7 +26,7 @@ class AdminView extends React.Component {
 
   componentDidMount() {
     const retrieve = () => {
-      this.props.retrieveOpenMessages((data) => {
+      this.props.retrieveMessages((data) => {
         this.setState({
           // may have to change 'data' depending on format
           messages: data,
@@ -76,6 +77,10 @@ class AdminView extends React.Component {
     sort.order *= -1;
 
     this.setState({ sort });
+  }
+
+  toggleFilter(e) {
+    this.setState({ filter: e.target.getAttribute('id') });
   }
 
   submitAdminResponse(response) {
@@ -131,6 +136,7 @@ class AdminView extends React.Component {
           <SplitButton
             title="Order"
             id="message-sort"
+            className="order"
             onClick={this.toggleOrder}
             onSelect={(e, ekey) => this.handleSort(ekey)}
           >
@@ -147,10 +153,34 @@ class AdminView extends React.Component {
               onChange={this.searchFilter}
             />
           </div>
+          <DropdownButton
+            title={this.state.filter}
+            id="message-filter"
+            className="filter"
+            pullRight
+            onSelect={(e, ekey) => this.toggleFilter(ekey)}
+          >
+            <MenuItem id="All">All</MenuItem>
+            <MenuItem id="Pending">Pending</MenuItem>
+            <MenuItem id="Responded">Responded</MenuItem>
+            <MenuItem id="Complete">Complete</MenuItem>
+          </DropdownButton>
         </div>
         <ul className="user-message-ul">
           <FlipMove>
             {this.state.messages
+              .filter((message) => {
+                if (this.state.filter === 'All') return true;
+                if (this.state.filter === 'Pending') {
+                  return message.admin_response === null;
+                }
+                if (this.state.filter === 'Responded') {
+                  return message.admin_response !== null;
+                }
+                if (this.state.filter === 'Complete') {
+                  return message.admin_complete !== null;
+                }
+              })
               .filter(message => (
                 message.user_message.toLowerCase().includes(this.state.search.toLowerCase())
                 || (`${message.first_name.toLowerCase()} ${message.last_name.toLowerCase()}`).includes(this.state.search.toLowerCase())
@@ -175,7 +205,7 @@ class AdminView extends React.Component {
 }
 
 AdminView.propTypes = {
-  retrieveOpenMessages: PropTypes.func.isRequired,
+  retrieveMessages: PropTypes.func.isRequired,
   showLogIn: PropTypes.func.isRequired,
   username: PropTypes.string,
 };

@@ -27,13 +27,13 @@ describe('Component: AdminView', () => {
   const showLogIn = () => {
     console.log('show log in');
   };
-  const retrieveOpenMessages = () => {
+  const retrieveMessages = () => {
     console.log('retrieve open messages');
   };
 
   it('should match its empty snapshot', () => {
     const component = shallow((
-      <AdminView showLogIn={showLogIn} retrieveOpenMessages={retrieveOpenMessages} />
+      <AdminView showLogIn={showLogIn} retrieveMessages={retrieveMessages} />
     ));
 
     expect(component).toMatchSnapshot();

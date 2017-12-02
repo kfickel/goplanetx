@@ -162,18 +162,24 @@ ol, ul {
   text-align: center;
 }
 
-.dropdown {
-  float: left;
+.message-container-header {
+  display: flex;
   padding-left: 40px;
+  padding-right: 60px;
 }
 
 .admin-msg-search {
   text-align: center;
+  flex-grow: 1;
+}
+
+.filter {
+  width: 112px;
 }
 
 #adminMessageSearch {
   margin: auto 0;
-  margin-right: 130px;
+  margin-left: 32px;
   width: 450px;
   padding: 5px;
 }
@@ -350,6 +356,11 @@ ol, ul {
 }
 
 /*====ADMIN NAVBAR SETTINGS====*/
+
+#admin-nav {
+  padding-top: 20px;
+  padding-left: 10px;
+}
 
 .nav-tab {
   border: 1px solid gray;
