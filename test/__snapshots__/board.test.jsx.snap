@@ -98,7 +98,7 @@ exports[`Component: Game should match its empty snapshot 1`] = `
             className="game-info"
           >
             <div>
-              Next player: X
+              Next player: ╳
             </div>
           </div>
           <Board
