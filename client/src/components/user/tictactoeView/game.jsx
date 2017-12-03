@@ -143,7 +143,12 @@ class Game extends React.Component {
       <Container>
         <Row>
           <Col sm={3}>
-            <Player player="╳" wins={this.state.player1wins} passBack={this.passBack} />
+            <Player
+              player="╳"
+              wins={this.state.player1wins}
+              passBack={this.passBack}
+              xnext={this.state.xIsNext}
+            />
           </Col>
           <Col md={6}>
             <div className="game">
@@ -194,7 +199,8 @@ class Game extends React.Component {
             </div>
           </Col>
           <Col sm={3}>
-            {this.props.twoPlayers ? (<Player player="◯" wins={this.state.player2wins} />)
+            {this.props.twoPlayers ? (
+              <Player player="◯" wins={this.state.player2wins} passBack={this.passBack} />)
             : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>
