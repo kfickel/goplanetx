@@ -6,17 +6,18 @@ import { Board } from './board';
 import Player from './player';
 import Computer from './computer';
 
+const lines = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
   for (let i = 0; i < lines.length; i += 1) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
@@ -78,7 +79,7 @@ class Game extends React.Component {
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
-    if (!this.state.gameInPlay || squares[i]) {
+    if (!this.state.gameInPlay || squares[i] || (!this.props.twoPlayers && !this.state.xIsNext)) {
       return;
     }
 
@@ -105,6 +106,52 @@ class Game extends React.Component {
           gameInPlay: false,
           winner: this.state.player2,
         });
+      } else if (!this.props.twoPlayers) {
+        let moved = false;
+        // try to win
+        for (let l = 0; l < lines.length; l += 1) {
+          if (/[◯](.*)[◯]/.test(squares[lines[l][0]] + squares[lines[l][1]] + squares[lines[l][2]])) {
+            for (let j = 0; j < 3; j += 1) {
+              if (squares[lines[l][j]] === null) {
+                squares[lines[l][j]] = '◯';
+                moved = true;
+                break;
+              }
+            }
+            if (moved) break;
+          }
+        }
+        // try to block
+        for (let l = 0; l < lines.length; l += 1) {
+          if (/[╳](.*)[╳]/.test(squares[lines[l][0]] + squares[lines[l][1]] + squares[lines[l][2]])) {
+            for (let j = 0; j < 3; j += 1) {
+              if (squares[lines[l][j]] === null) {
+                squares[lines[l][j]] = '◯';
+                moved = true;
+                break;
+              }
+            }
+            if (moved) break;
+          }
+        }
+        if (!moved) {
+          // random logic
+          const open = [];
+          for (let j = 0; j < squares.length; j += 1) {
+            if (squares[j] === null) {
+              open.push(j);
+            }
+          }
+          squares[open[Math.floor(Math.random() * open.length)]] = '◯';
+        }
+        // computer moves
+        setTimeout(() => (
+          this.setState({
+            history: history.concat([{ squares }]),
+            stepNumber: history.length,
+            xIsNext: !this.state.xIsNext,
+          })
+        ), 300);
       }
     });
   }
