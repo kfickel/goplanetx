@@ -63,6 +63,16 @@ class Game extends React.Component {
     });
   }
 
+  onPlayerChange() {
+    // when the button is clicked to change between player 2 and computer
+      // want to reset the wins (on game.jsx)
+      // reset the board (call onReset)
+    this.setState({
+      player1wins: 0,
+      player2wins: 0,
+    }, () => this.onReset());
+  }
+
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];

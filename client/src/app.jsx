@@ -233,7 +233,9 @@ class App extends React.Component {
   }
 
   playFriend() {
-    this.setState({ twoPlayers: !this.state.twoPlayers });
+    this.setState({
+      twoPlayers: !this.state.twoPlayers,
+    }, () => this.child.onPlayerChange());
   }
 
   conditionalRender() {
@@ -251,7 +253,7 @@ class App extends React.Component {
               </Button>
             </p>
           </Jumbotron>
-          <Game />
+          <Game ref={(game) => { this.child = game; }} />
           <br />
           <div className="report-bug-message">
             <p>It looks like you&apos;ve found a bug.  Would you like to report it?</p>
@@ -280,7 +282,7 @@ class App extends React.Component {
           <Jumbotron>
             <h1 bsclass="jumbotron" className="main-title">Tic Tac Toe</h1>
           </Jumbotron>
-          <Game />
+          <Game ref={(game) => { this.child = game; }} />
           <div>
             <Login logInUser={this.logInUser} showSignUp={this.showSignUp} />
           </div>
@@ -300,7 +302,7 @@ class App extends React.Component {
               </Button>
             </p>
           </Jumbotron>
-          <Game />
+          <Game ref={(game) => { this.child = game; }} />
           <div>
             <Signup createUser={this.createUser} showLogIn={this.showLogIn} />
           </div>
@@ -320,7 +322,7 @@ class App extends React.Component {
               </Button>
             </p>
           </Jumbotron>
-          <Game twoPlayers={this.state.twoPlayers} />
+          <Game twoPlayers={this.state.twoPlayers} ref={(game) => { this.child = game; }} />
           <div>
             <Submission
               sendMessage={this.sendMessage}
@@ -344,7 +346,7 @@ class App extends React.Component {
               </Button>
             </p>
           </Jumbotron>
-          <Game twoPlayers={this.state.twoPlayers} />
+          <Game twoPlayers={this.state.twoPlayers} ref={(game) => { this.child = game; }} />
           <div>
             <UserResponses
               showSubmissionForm={this.showSubmissionForm}
@@ -372,6 +374,7 @@ class App extends React.Component {
           twoPlayers={this.state.twoPlayers}
           unlockForms={this.unlockForms}
           showLogIn={this.showLogIn}
+          ref={(game) => { this.child = game; }}
         />
       </div>
     );
