@@ -146,6 +146,7 @@ h3 {
 }
 
 .player {
+  padding-top: 7px;
   text-align: center;
   color: #4B586E;
   font-family: Impact, Charcoal, sans-serif;
@@ -153,11 +154,13 @@ h3 {
 }
 
 .player.x {
-  background-color: white;
+  background-color: #f7da74;
+  border-radius: 30px;
 }
 
 .player.o {
-  background-color: white;
+  background-color: #f7da74;
+  border-radius: 30px;
 }
 
 #info {
