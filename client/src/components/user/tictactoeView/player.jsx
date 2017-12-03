@@ -17,6 +17,8 @@ class Player extends React.Component {
   handleOnChange(e) {
     this.setState({
       playerName: e.target.value,
+    }, () => {
+      this.props.passBack(this.state.playerName, this.props.player);
     });
   }
 

@@ -38,12 +38,16 @@ class Game extends React.Component {
       stepNumber: 0,
       xIsNext: true,
       player1wins: 0,
+      player1: '',
       player2wins: 0,
+      player2: '',
+      winner: '',
       gameInPlay: true,
     };
 
     this.onReset = this.onReset.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.passBack = this.passBack.bind(this);
   }
 
   onReset() {
@@ -83,14 +87,32 @@ class Game extends React.Component {
         this.setState({
           player1wins: this.state.player1wins + 1,
           gameInPlay: false,
+          winner: this.state.player1,
         });
       } else if (winner.player === '◯') {
         this.setState({
           player2wins: this.state.player2wins + 1,
           gameInPlay: false,
+          winner: this.state.player2,
         });
       }
     });
+  }
+
+  passBack(name, player) {
+    if (player === '╳') {
+      this.setState({
+        player1: name,
+      });
+    } else if (player === '◯') {
+      this.setState({
+        player2: name,
+      });
+    } else {
+      this.setState({
+        player2: 'Computer',
+      });
+    }
   }
 
   jumpTo(step) {
@@ -107,22 +129,27 @@ class Game extends React.Component {
 
     let status;
     if (winner.player) {
-      status = `Winner: ${winner.player}`;
+      status = (
+        <div className="winner">
+          <span className="winnerHeader">Winner: </span>
+          {winner.player} {this.state.winner}
+        </div>
+      );
     } else {
-      status = `Next player: ${this.state.xIsNext ? '╳' : '◯'}`;
+      status = <div> Next player: {this.state.xIsNext ? '╳' : '◯'}</div>;
     }
 
     return (
       <Container>
         <Row>
           <Col sm={3}>
-            <Player player="╳" wins={this.state.player1wins} />
+            <Player player="╳" wins={this.state.player1wins} passBack={this.passBack} />
           </Col>
           <Col md={6}>
             <div className="game">
               <div className="game-board">
                 <div className="game-info">
-                  <div>{status}</div>
+                  {status}
                 </div>
                 <Board
                   squares={current.squares}

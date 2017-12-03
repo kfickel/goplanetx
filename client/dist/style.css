@@ -136,6 +136,15 @@ h3 {
   padding-bottom: 12px;
 }
 
+.winner {
+  font-size: 40px; 
+  text-align: center;
+}
+
+.winnerHeader {
+  font-weight: bold;
+}
+
 .player {
   text-align: center;
   color: #4B586E;
