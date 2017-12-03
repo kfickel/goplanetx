@@ -34,7 +34,7 @@ class Player extends React.Component {
     if (this.state.readyToPlay) {
       return (
         <div className="wins">
-          <h3 className="player">{this.props.player} {this.state.playerName}</h3>
+          <h3 className={`player ${this.props.xnext}`}>{this.props.player} {this.state.playerName}</h3>
           <p>Wins: {this.props.wins}</p>
         </div>
       );

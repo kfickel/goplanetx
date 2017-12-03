@@ -152,6 +152,14 @@ h3 {
   font-size: 36px;
 }
 
+.player.x {
+  background-color: white;
+}
+
+.player.o {
+  background-color: white;
+}
+
 #info {
   width: 20px;
   height: 20px;
