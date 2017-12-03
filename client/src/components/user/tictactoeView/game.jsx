@@ -204,7 +204,7 @@ class Game extends React.Component {
               player="╳"
               wins={this.state.player1wins}
               passBack={this.passBack}
-              xnext={this.state.xIsNext}
+              xnext={this.state.xIsNext && 'x'}
             />
           </Col>
           <Col md={6}>
@@ -261,7 +261,8 @@ class Game extends React.Component {
                 player="◯"
                 wins={this.state.player2wins}
                 passBack={this.passBack}
-                xnext={this.state.xIsNext} />)
+                xnext={!this.state.xIsNext && 'o'}
+              />)
             : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>

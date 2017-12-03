@@ -88,7 +88,7 @@ exports[`Component: Game should match its empty snapshot 1`] = `
         passBack={[Function]}
         player="╳"
         wins={0}
-        xnext={true}
+        xnext="x"
       />
     </Col>
     <Col
@@ -242,7 +242,7 @@ exports[`Component: Game should match its empty snapshot 1`] = `
         passBack={[Function]}
         player="◯"
         wins={0}
-        xnext={true}
+        xnext={false}
       />
     </Col>
   </Row>
