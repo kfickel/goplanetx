@@ -200,7 +200,11 @@ class Game extends React.Component {
           </Col>
           <Col sm={3}>
             {this.props.twoPlayers ? (
-              <Player player="◯" wins={this.state.player2wins} passBack={this.passBack} />)
+              <Player
+                player="◯"
+                wins={this.state.player2wins}
+                passBack={this.passBack}
+                xnext={this.state.xIsNext} />)
             : (<Computer wins={this.state.player2wins} />)}
           </Col>
         </Row>

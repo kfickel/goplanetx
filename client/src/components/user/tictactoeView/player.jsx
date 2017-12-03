@@ -54,6 +54,7 @@ class Player extends React.Component {
 Player.propTypes = {
   wins: PropTypes.number.isRequired,
   player: PropTypes.string.isRequired,
+  passBack: PropTypes.func.isRequired,
 };
 
 export default Player;
