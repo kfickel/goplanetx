@@ -10,7 +10,7 @@ class Computer extends React.Component {
   render() {
     return (
       <div className="wins">
-        <h3 className="player">Computer</h3>
+        <h3 className="player">◯ Computer</h3>
         <p>Wins: {this.props.wins}</p>
       </div>
     );

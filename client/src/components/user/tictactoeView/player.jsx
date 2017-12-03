@@ -17,6 +17,8 @@ class Player extends React.Component {
   handleOnChange(e) {
     this.setState({
       playerName: e.target.value,
+    }, () => {
+      this.props.passBack(this.state.playerName, this.props.player);
     });
   }
 
@@ -52,6 +54,7 @@ class Player extends React.Component {
 Player.propTypes = {
   wins: PropTypes.number.isRequired,
   player: PropTypes.string.isRequired,
+  passBack: PropTypes.func.isRequired,
 };
 
 export default Player;
